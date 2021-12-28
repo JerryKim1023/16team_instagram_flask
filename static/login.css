@@ -27,7 +27,7 @@ img.logo_instagram {
 }
 .input_login::placeholder {
     font-size: 12px;
-    color: #8e8e8e;    
+    color: #8e8e8e;
 }
 .input_login:focus {
     border: 1px solid #8a8a8a;
@@ -67,4 +67,4 @@ a {
 }
 .button_forgot:hover {
     cursor: pointer;
-} 
+}
