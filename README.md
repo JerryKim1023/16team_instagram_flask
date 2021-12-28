@@ -1,6 +1,7 @@
 # instagram_flask
 
 내일배움캠프 ai웹개발자 양성과정 2차팀 16조 악바리조 instagram 클론코딩(flask) 프로젝트
+
 사용언어 및 프레임워크 및 기능 : HTML, JavaScript, Ajax, Python, Flask, MongoDB...
 
 사용기술
