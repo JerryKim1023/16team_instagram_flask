@@ -38,8 +38,9 @@ p, span {
 }
 
 .article {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
+    display: flex;
+    /*-webkit-box-orient: horizontal;*/
+    /*-webkit-box-direction: normal;*/
     /*-webkit-flex-direction: row;*/
     /*-ms-flex-direction: row;*/
     flex-direction: row;
@@ -156,9 +157,10 @@ footer {
   padding: 5rem 0;
 }
 
-footer .container {
+footer .bottom_container {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 1.3rem;
