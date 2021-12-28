@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--한국어로 설정-->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!--    jQuery,부트스트랩-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <!--     모바일 화면구성을 위한 뷰포트 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--     CSS 파일 불러오기-->
+    <link rel="stylesheet" href="../static/style.css">
+
+    <title>Coder'stagram_Flask_Project</title>
+
+</head>
+<body>
+<div class="contentsWrap">
+    <div class="loginWindow">
+        <img src="img/logo.png" alt="" id="instaLogo">
+        <input type="text" placeholder="전화번호, 사용자 이름 또는 이메일" class="inlineToBlock">
+        <input type="password" placeholder="비밀번호" class="inlineToBlock">
+        <button class="inlineToBlock ordinaryLogin unactivatedLoginColor">로그인</button>
+
+        <div class="horizonAndOrWrap">
+            <hr class="leftHr">
+            <div class="or">또는</div>
+            <hr class="rightHr">
+        </div>
+
+        <a href="#" class="noneunderline">
+            <button class="inlineToBlock facebookLogin">
+                <img src="img/facebook.png" alt="" class="facebookIcon">
+                Facebook으로 로그인
+            </button>
+        </a>
+
+    </div>
+    <div class="haveAccount">
+        <p>계정이 없으신가요?
+            <a href="#" class="noneunderline">가입하기</a>
+        </p>
+    </div>
+</div>
+
+<script src="in.js"></script>
+</body>
+</html>
+<script>
+    let inputTag = document.getElementsByTagName("input");
+    let buttonArray = document.getElementsByTagName("button");
+
+    let inputId = inputTag[0]; //아이디 입력창(input 태그의 0번째)
+    let inputPassword = inputTag[1]; //비밀번호 입력창
+
+    let ordinaryButton = buttonArray[0];
+    let facebookLoginButton = buttonArray[1];
+
+    inputPassword.addEventListener("keyup", () => {
+        if (inputId.value) {
+            ordinaryButton.classList.remove("unactivatedLoginColor");
+            ordinaryButton.classList.add("activatedLoginColor");
+        }
+        if (!inputPassword.value) {
+            ordinaryButton.classList.remove("activatedLoginColor");
+            ordinaryButton.classList.add("unactivatedLoginColor");
+        }
+    })
+
+    ordinaryButton.addEventListener('click', () => {
+        if (inputId.value === "본인의아이디" && inputPassword.value === "비밀번호") {
+            alert("로그인 성공");
+        } else {
+            alert("로그인 실패");
+        }
+    })
+</script>
+</body>
+</html>
