@@ -4,6 +4,7 @@
 사용언어 및 프레임워크 및 기능 : HTML, JavaScript, Ajax, Python, Flask, MongoDB...
 
 사용기술
+
 백엔드
 언어: HTML, JavaScript, Python
 프레임워크: python
