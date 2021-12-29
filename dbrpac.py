@@ -1,16 +1,51 @@
 from pymongo import MongoClient
+
 client = MongoClient('mongodb+srv://AKBARI:sparta@cluster0.jujbu.mongodb.net/cluster0?retryWrites=true&w=majority')
 db = client.dbakbari
 
-
-doc = {
-    'hmail':'doublej@gmail.com',
-    'name':'jiyongkim',
-    'nname':'jerrykim',
-    'pw':'sparta'    
+login_doc = {
+    'hmail': 'doublej@gmail.com',
+    'name': 'jiyongkim',
+    'id': 'jerrykim',
+    'pw': 'sparta'
 }
+db.login.insert_one(login_doc)
 
-db.login.insert_one(doc)
+user_info_doc = {
+    'name': '김개똥',
+    'photo': 'URL입력',
+    'birth': '몇 월 몇 일',
+    'id': 'nmdkims',
+    'pw': 'sparta'
+}
+db.user_info.insert_one(user_info_doc)
+
+contents_doc = {
+    'text_id': '1',
+    'id': 'idid',
+    'text_time': '몇 월 몇 일',
+    'comment': '잘 있었냔 인사가 무색할 만큼',
+    'like': '좋아요'
+}
+db.contents.insert_one(contents_doc)
+
+bookmark_doc = {
+    'text_id': '1'
+}
+db.bookmark.insert_one(bookmark_doc)
+
+mypage_doc = {
+    'text_id': '1'
+}
+db.mypage.insert_one(mypage_doc)
+
+comment_doc = {
+    'id': '1',
+    'comment': '댓글 작성중입니다.',
+    'comment_time': '몇년 몇월 몇일에 작성되었습니다.',
+
+}
+db.comment.insert_one(comment_doc)
 
 # db.movies.update_one({'title':'가버나움'},{'$set':{'star':"0"}})
 
@@ -21,8 +56,6 @@ db.login.insert_one(doc)
 #
 # for same_movie in all_movies:
 #         print(same_movie['title'])
-
-
 
 
 # insert
