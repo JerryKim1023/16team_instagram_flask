@@ -100,6 +100,9 @@ p, span {
     margin-top: 12px;
     max-width: 350px;
 }
+.logo_instagram {
+    cursor : pointer;
+}
 
 /*.container {*/
 /*    -webkit-box-align: center;*/
