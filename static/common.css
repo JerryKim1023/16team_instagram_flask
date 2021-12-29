@@ -1,9 +1,17 @@
+/** {*/
+/*	font-family: 'Jua', sans-serif; font-family: 'Open Sans', sans-serif;*/
+/*	margin: 0; padding: 0; justify-content: center; align-items: center;*/
+/*}*/
+
+
+
 * {
     box-sizing: border-box;
     font-family: 'helvetica neue', 'Apple SD Gothic Neo', Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
+    line-height: 1.5;
     background-color: #fafafa;
     padding: 0;
     margin: 0;
@@ -15,59 +23,37 @@ p, span {
 
 
 .whole_wrap {
-    display: flex;
-    /*-webkit-box-orient: vertical;*/
-    /*-webkit-box-direction: normal;*/
-    /*-webkit-flex-direction: column;*/
-    /*-ms-flex-direction: column;*/
-    flex-direction: column;
-    /*-webkit-box-flex: 1;*/
-    /*-webkit-flex-grow: 1;*/
-    /*-ms-flex-positive: 1;*/
-    flex-grow: 1;
+
+
 }
 
 .main {
-    /*    -webkit-box-flex: 1;*/
-    /*-webkit-flex-grow: 1;*/
-    /*-ms-flex-positive: 1;*/
+
     flex-grow: 1;
-    /*-webkit-box-ordinal-group: 5;*/
-    /*-webkit-order: 4;*/
-    /*-ms-flex-order: 4;*/
+
     order: 4;
+
 }
 
 .article {
     display: flex;
-    /*-webkit-box-orient: horizontal;*/
-    /*-webkit-box-direction: normal;*/
-    /*-webkit-flex-direction: row;*/
-    /*-ms-flex-direction: row;*/
     flex-direction: row;
-    -webkit-box-flex: 1;
-    /*-webkit-flex-grow: 1;*/
-    /*-ms-flex-positive: 1;*/
     flex-grow: 1;
-    -webkit-box-pack: center;
-    /*-webkit-justify-content: center;*/
-    /*-ms-flex-pack: center;*/
+
     justify-content: center;
     margin: 32px auto 0;
     max-width: 935px;
     padding-bottom: 32px;
     width: 100%;
 }
-
+ /*왼쪽 프레임*/
 .left_frame {
-    -webkit-align-self: center;
-    -ms-flex-item-align: center;
+
+    /*align-items: center;*/
     align-self: center;
     background-image: url(https://www.instagram.com/static/images/homepage/home-phones.png/43cc71bb1b43.png);
     background-position: 0 0;
     background-size: 454px 618px;
-    -webkit-flex-basis: 454px;
-    -ms-flex-preferred-size: 454px;
     flex-basis: 454px;
     height: 618px;
     margin-left: -35px;
@@ -88,70 +74,135 @@ p, span {
     visibility: hidden;
     width: 240px;
 }
+/*왼쪽 프레임 끝*/
 
+
+   /*우측프레임*/
 .right_frame {
-    color: rgba(var(--i1d, 38, 38, 38), 1);
-    -webkit-box-flex: 1;
-    /*-webkit-flex-grow: 1;*/
-    /*-ms-flex-positive: 1;*/
+    color: slategray;
     flex-grow: 1;
-    -webkit-box-pack: center;
-    /*-webkit-justify-content: center;*/
-    /*-ms-flex-pack: center;*/
     justify-content: center;
+    align-content: center;
     margin-top: 12px;
     max-width: 350px;
+}
+
+.right_frame > div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 .logo_instagram {
     cursor: pointer;
 }
+/*마진 패딩만   주황은 마진  초록은 패딩*/
+
+/*로그인 시작*/
+.container {
+    width: 350px;
+    height: 420px;
+    margin: 100px auto 10px auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    background-color: #fff;
+    border: 1px solid slategray;
+}
+img.logo_instagram {
+    align-self: center;
+    width: 175px;
+    margin: 30px auto;
+}
+.input_login {
+    width: 270px;
+    height: 40px;
+    margin: 0 auto;
+    padding: 0 10px;
+    display: block;
+    background-color: #fafafa;
+    border: 1px solid #DBDBDB;
+    border-radius: 3px;
+    font-size: 14px;
+}
+.input_login::placeholder {
+    font-size: 12px;
+    color: #8e8e8e;
+}
+.input_login:focus {
+    border: 1px solid #8a8a8a;
+    outline: none;
+}
+#btn_login {
+    width: 268px;
+    height: 30px;
+    margin: 13px auto;
+    background-color: #0095f6;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+#btn_login:disabled {
+    background-color: #B9DFFC;
+}
+#btn_login:disabled:hover {
+    cursor: default;
+}
+#btn_login:enabled:hover {
+    cursor: pointer;
+}
+#btn_login:focus {
+    outline: none;
+}
+a {
+    cursor: default;
+}
+
+/*로그인  끝*/
 
 .or_frame {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    /*-webkit-flex-direction: row;*/
-    /*-ms-flex-direction: row;*/
     flex-direction: row;
-    margin: 10px 40px 18px;
+    margin: 10px 40px 18px 10px;
 }
 
 .or_frame > or_line {
-    /*-webkit-box-flex: 1;*/
-    /*-webkit-flex-grow: 1;*/
-    /*-ms-flex-positive: 1;*/
+
     flex-grow: 1;
-    /*-webkit-flex-shrink: 1;*/
-    /*-ms-flex-negative: 1;*/
     flex-shrink: 1;
-    /*background-color: #dbdbdb;*/
-    background-color: rgba(var(--b38, 219, 219, 219), 1);
+    background-color: #dbdbdb;
     height: 1px;
     position: relative;
     top: 0.45em;
 }
 
-}
 .or {
-    color: rgba(var(--f52, 142, 142, 142), 1);
-    -webkit-box-flex: 0;
-    /*-webkit-flex-grow: 0;*/
-    /*-ms-flex-positive: 0;*/
-    flex-grow: 0;
-    /*-webkit-flex-shrink: 0;*/
-    /*-ms-flex-negative: 0;*/
-    flex-shrink: 0;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 15px;
-    margin: 0 18px;
-    text-transform: uppercase;
+	padding: 35px 20px;
+	position: relative;
+}
+.or:after {
+	content: "";
+	width: 100%;
+	height: 1px;
+	background: #adadad;
+	border-radius: 20px;
+	display: block;
+}
+.or span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #fff;
+	color: #a3a3a3;
+	padding: 0 10px;
 }
 
 .facebook_button {
     border: 0;
-    /*color: #0095f6;*/
-    color: rgba(var(--d69, 0, 149, 246), 1);
+    color: #0095f6;
     display: inline;
     padding: 0;
     position: relative;
@@ -165,6 +216,7 @@ p, span {
     text-overflow: ellipsis;
     user-select: none;
     width: auto;
+    margin-right: 0px;
 }
 
 .facebook_icon {
@@ -180,42 +232,31 @@ p, span {
 
 .facebook_login {
     color: #385185;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
 }
 
 .button_forgot {
-    color: rgba(var(--fe0, 0, 55, 107), 1);
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    box-sizing: border-box;
+    color : #00366B;
+    align-self: center;
     font-size: 12px;
-    line-height: 16px;
-    margin-top: 12px;
-    text-align: center;
+}
+.button_forgot:hover {
+    cursor: pointer;
 }
 
-.button_forgot > a {
-    text-decoration: none;
-}
-
-/*.container {*/
-/*    -webkit-box-align: center;*/
-/*    !*-webkit-align-items: center;*!    ㅇ*/
-/*    !*-ms-flex-align: center;*!            ㅇ*/
-/*    align-items: center;*/
-/*    background-color: rgba(var(--d87,255,255,255),1);*/
-/*    !*border: 1px solid #dbdbdb;*!               ㅇ*/
-/*    border: 1px solid rgba(var(--b6a,219,219,219),1);*/
-/*    border-radius: 1px;*/
-/*    margin: 0 0 10px;*/
-/*    padding: 10px 0;*/
-/*}*/
 
 .sign_in_box {
-    -webkit-box-align: center;
-    /*-webkit-align-items: center;*/
-    /*-ms-flex-align: center;*/
+    display: flex;
     align-items: center;
-    /*background-color: #fff;*/
-    background-color: rgba(var(--d87, 255, 255, 255), 1);
-    /*border: 1px solid #dbdbdb;*/
-    border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
     border-radius: 1px;
     margin: 0 0 10px;
     padding: 10px 0;
@@ -223,46 +264,73 @@ p, span {
 
 .sign_in_frame {
     display: block;
-    color: rgba(var(--f52, 142, 142, 142), 1);
+    color: slategray;
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
     margin: -3px 0 -4px;
+}
+.sign_in_link {
+    cursor: pointer;
 }
 
 .app_box {
     width: 350px;
     height: 102px;
 }
-
-.app_down {
-    margin-right: 8px;
+.app_box > p {
+   text-align: center;
+}
+.app_frame {
+    display: flex;
+    width: 90%;
 }
 
-.app_down:last-child {
-    margin-right: 0;
+.app_down1 {
+    width: 136px;
+    margin-left: 20px;
+    margin-right: 40px;
+    border-radius: 0.25rem;
+    display: block;
+    height: auto;
+    vertical-align: middle;
+    cursor: pointer;
 }
+
+.app_down2 {
+    width: 136px;
+    border-radius: 0.25rem;
+    display: block;
+    height: auto;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+/*우측프레임 끝*/
+
 
 /**
  * Footer
  */
 footer {
+
     padding: 5rem 0;
+    display: flex;
+    align-items: flex-end;
+    /*font-weight: bold;*/
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin : 0 auto;
+    padding: 15px 0;
 }
 
-footer .bottom_container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 1.3rem;
-    margin-top: 0;
-    flex-wrap: wrap;
+.bottom_container {
+    margin: 0 auto;
 }
 
 .footer-nav ul {
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     list-style: none;
 }
@@ -275,6 +343,55 @@ footer .bottom_container {
     color: #003569;
 }
 
+.footer_bottom {
+    display: flex;
+    /*width: 90%;*/
+    justify-content: space-between;
+
+}
+
 .copyright-notice {
     color: #999999;
+    justify-content: center;
+}
+
+.sign_form {
+    display: flex;
+    /*width: 90%;*/
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.btn-group {
+    margin-left: 300px;
+    margin-right: -100px;
+    display: flex;
+    border-radius: 0.25rem;
+    height: auto;
+    cursor: pointer;
+}
+
+.copyright-notice {
+    margin-right: 200px;
+    display: flex;
+    width: 500px;
+    border-radius: 0.25rem;
+    height: auto;
+    cursor: pointer;
+}
+
+/*Footer 끝*/
+
+
+/*회원가입 페이지 추가 css*/
+.sign_in_container {
+    width: 350px;
+    height: 500px;
+    margin: 100px auto 10px auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    background-color: #fff;
+    border: 1px solid slategray;
 }
