@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    my_page();
-    // read_db();
+    // my_page();
+    read_db();
 });
 // my_page() 주석과 read_db() 주석을 변경하여 보세요
 
