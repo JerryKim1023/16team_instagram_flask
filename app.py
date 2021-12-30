@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return render_template("index.html")  # 처음 페이지
+    return render_template("login.html")  # 처음 페이지
 
 
 @app.route('/detail')
