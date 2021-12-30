@@ -42,7 +42,9 @@ def sign_up():
 def login():
     return render_template('login.html')  # 로그인 화면으로 이동
 
-
+@app.route('/sign_up')
+def login_after_sign_up():
+    return render_template('sign_up.html')  # 회원가입 로그인 화면으로 이동
 
 @app.route('/mypage')
 def mypage():
