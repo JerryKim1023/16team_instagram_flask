@@ -16,7 +16,33 @@
     <!--     CSS 파일 불러오기-->
     <link rel="stylesheet" href="../static/login.css" type="text/css">
     <link rel="stylesheet" href="../static/common.css" type="text/css">
-    <script src="login.js"></script>
+
+    <script>
+        // 회원가입 부분 ajax 구현
+        function sign_up() {
+            $.ajax({
+                type: "POST",
+                url: "/sign_up",
+                data: {
+                    userEmail_give: $('#userEmail').val(),
+                    userName_give: $('#userName').val(),
+                    user_sign_ID_give: $('#user_sign_ID').val(),
+                    user_sign_PW_give: $('#user_sign_PW').val()
+
+                },
+                success: function (response) {
+                    if (response['result'] == 'success') {
+                        alert('회원가입이 완료되었습니다.')
+                        window.location.href = '/login'
+                    } else {
+                        alert(response['msg'])
+                    }
+                }
+            })
+        }
+
+    </script>
+
 
 
 </head>
@@ -47,23 +73,24 @@
                     <!--                    회원가입에 필요한 dictionary 정보입력창-->
                     <input type="text" class="input_login" name="userEmail" id="userEmail"
                            placeholder="이메일 주소">
-                    <input type="password" class="input_login" name="userName" id="userName" placeholder="성명">
+                    <input type="text" class="input_login" name="userName" id="userName" placeholder="성명">
                     <input type="text" class="input_login" name="user_sign_ID" id="user_sign_ID"
                            placeholder="사용자 이름">
                     <input type="password" class="input_login" name="user_sign_PW" id="user_sign_PW" placeholder="비밀번호">
                     <a href="#none">
-                        <button id="btn_login" disabled>가입</button>
+<!--                        가입 버튼 활성화-->
+                        <button onclick="sign_up()" type="button" id="btn_login" >가입</button>
                     </a>
 
 
-                    <a class="button_forgot" href="https://www.instagram.com/accounts/password/reset/">비밀번호를
+                    <a class="button_forgot" href="/forgot_password">비밀번호를
                         잊으셨나요?</a>
                 </div>
                 <div class="sign_in_box">
                     <div class="sign_in_frame">
                         <p>
                             계정이 있으신가요?
-                            <a href="./login.html" tabindex="0"><span
+                            <a href="/" tabindex="0"><span
                                     class="sign_in_link">로그인하기</span></a>
                         </p>
                     </div>
@@ -146,6 +173,6 @@
         </div>
     </footer>
 </section>
-<script src="login.js"></script>
+<script src="../static/login.js"></script>
 </body>
 </html>
