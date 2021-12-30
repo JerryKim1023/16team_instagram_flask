@@ -163,21 +163,8 @@ a {
 
 /*로그인  끝*/
 
-.or_frame {
-    flex-direction: row;
-    margin: 10px 40px 18px 10px;
-}
 
-.or_frame > or_line {
-
-    flex-grow: 1;
-    flex-shrink: 1;
-    background-color: #dbdbdb;
-    height: 1px;
-    position: relative;
-    top: 0.45em;
-}
-
+/*또는*/
 .or {
 	padding: 35px 20px;
 	position: relative;
@@ -235,6 +222,7 @@ a {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    cursor: pointer;
 }
 
 .button_forgot {
@@ -270,6 +258,11 @@ a {
     line-height: 18px;
     margin: -3px 0 -4px;
 }
+
+/*.sign_in_frame > p, a {*/
+/*    align-self: center;*/
+/*}*/
+
 .sign_in_link {
     cursor: pointer;
 }
@@ -395,3 +388,5 @@ footer {
     background-color: #fff;
     border: 1px solid slategray;
 }
+
+
