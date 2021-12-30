@@ -2,32 +2,121 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../static/crud.js"></script>
-    <link rel="stylesheet" href="../static/crud.css">
-
-
-    <title>기능모음</title>
-    <script>
-        <!--자바 스크립트 내용은 ../static/crud.js에 저장하여 불러옵니다. -->
-
-    </script>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mymobile.css">
+    <link rel="stylesheet" media="(min-width: 860px)" href="myweb.css">
+    <title>Instagram</title>
 </head>
 <body>
-<div class="mypic">
-    <h1>데이터 베이스 핸들링</h1>
-</div>
-<div class="mybox">
-    <div class="mydb">
-        <input id="db" class="form-control" type="text" placeholder="값을 입력하세요">
-        <button onclick="create_db()" type="button" class="btn btn-outline-primary">기록하기</button>
-    </div>
-</div>
-<div class="mybox" id="db-list">
+    <div id="main">
+        <div id="mobile-header">
+            <img class="header-icon" src="https://i.imgur.com/DBcXbOE.png"/>
+            <img id="logo" src="https://i.imgur.com/BhB0ET4.png"/>
+            <img class="header-icon" src="https://i.imgur.com/itaPUxe.png"/>
+        </div>
+        <div id="desktop-header">
+            <div id="desktop-header-wrapper">
+                <div id="logo-wrapper">
+                    <img src="https://i.imgur.com/BhB0ET4.png"/>
+                </div>
+                <div id="search-wrapper">
+                    <img src="https://i.imgur.com/V7VUmWq.png">
+                    <p>검색</p>
+                </div>
+                <div id="header-icon-wrapper">
+                    <img class="header-icon" src="https://i.imgur.com/obZ4GI0.png"/>
+                    <img class="header-icon" src="https://i.imgur.com/p9T8Jgd.png"/>
+                    <img class="header-icon" src="https://i.imgur.com/jwVoZUU.png"/>
+                    <img class="header-icon" src="https://i.imgur.com/n0hgaRi.png"/>
+                </div>
+            </div>
+        </div>
+        <div id="container">
+            <div id="main-container">
+                <div id="profile-container">
+                    <div id="profile-photo">
+                        <img src="https://i.imgur.com/f7sHxMT.jpg">
+                    </div>
 
-    <div class="flex-container" id="column_container">
+                    <div class="profile-wrapper">
+                        <div class="profile-id">
+                            <h1>user id</h1>
+                        </div>
+                        <div class="profile-set">
+                        <ul class="profile-info">
+                            <li class="profile-follow">
+                                <a class="profile-follow" href="url" tabindex="0">
+                                    게시물
+                                    <span class="profile-follow" title="14">31</span>
+                                </a>
+                                </span>
+                            </li>
+                            <li class="profile-follow">
+                                <a class="profile-follow" href="팔로우url" tabindex="0">
+                                    팔로워
+                                    <span class="profile-follow" title="14">14</span>
+                                </a>
+                            </li>
+                            <li class="profile-follow">
+                                <a class="profile-follow" href="팔로워url" tabindex="0">
+                                    팔로우
+                                    <span class="profile-follow" >29</span>
+                                </a>
+                            </li>
+                        </ul>
+                        </div>
+                        <div class="profile-bio">
+                            <span>자기소개가 들어가는 자리입니다</span>
+                        </div>
+                    </div>
+                </div>
 
-    </div>
+                <div class="myfeed-icons">
+                    <a aria-selected="false" class="_9VEo1 T-jvg" role="tab" href="/eimy.py/" tabindex="0"><span class="smsjF"><svg aria-label="" class="_8-yf5 " color="#8e8e8e" fill="#8e8e8e" height="50" role="img" viewBox="0 0 24 24" width="20"><rect fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="18" x="3" y="3"></rect><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="9.015" x2="9.015" y1="3" y2="21"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="14.985" x2="14.985" y1="3" y2="21"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="21" x2="3" y1="9.015" y2="9.015"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="21" x2="3" y1="14.985" y2="14.985"></line></svg></span></a>
+                    <a aria-selected="false" class="_9VEo1 " role="tab" href="/eimy.py/channel/" tabindex="0"><span class="smsjF"><svg aria-label="" class="_8-yf5 " color="#8e8e8e" fill="#8e8e8e" height="50" role="img" viewBox="0 0 24 24" width="20"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 22.5C6.2 22.5 1.5 17.8 1.5 12S6.2 1.5 12 1.5 22.5 6.2 22.5 12 17.8 22.5 12 22.5zm5-11.8l-6.8-3.9c-.5-.3-1-.3-1.5 0-.4.3-.7.7-.7 1.3v7.8c0 .5.3 1 .8 1.3.2.1.5.2.8.2s.5-.1.8-.2l6.8-3.9c.5-.3.8-.8.8-1.3s-.5-1-1-1.3zm-7.5 5.2V8.1l6.8 3.9-6.8 3.9z"></path></svg></span></a>
+                    <a aria-selected="false" class="_9VEo1 " role="tab" href="/eimy.py/saved/" tabindex="0"><div class="smsjF"><svg aria-label="" class="_8-yf5 " color="#8e8e8e" fill="#8e8e8e" height="50" role="img" viewBox="0 0 24 24" width="20"><polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon></svg></div></a>
+                </div>
+
+                <hr>
+                <div class="myfeed-photo-container">
+                    <div class="myfeed-photo-wrapper">
+                        <div class="myfeed-photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="myfeed-photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="myfeed-photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                    </div>
+
+                    <div class="myfeed-photo-wrapper">
+                        <div class="myfeed-photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="myfeed-photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="myfeed-photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                    </div>
+
+                    <div class="myfeed-photo-wrapper">
+                        <div class="myfeed-photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="myfeed-photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="myfeed-photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                    </div>
+
+                </div>
+        </div>
 </body>
 </html>

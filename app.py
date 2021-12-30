@@ -33,8 +33,11 @@ def detail():
 @app.route('/sign_up', methods=['POST'])
 def sign_up():
     userEmail_receive = request.form['userEmail_give']
+
     userName_receive = request.form['userName_give']
+
     user_sign_ID_receive = request.form['user_sign_ID_give']
+
     user_sign_PW_receive = request.form['user_sign_PW_give']
 
     # PW 해쉬 적용
