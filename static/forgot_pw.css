@@ -1,0 +1,289 @@
+/* 모바일 용 요소들 삭제 */
+/*#footer {*/
+/*  display: none;*/
+/*}*/
+/*#mobile-header {*/
+/*  display: none;*/
+/*}*/
+
+
+body {
+    background-color: #fafafa;
+    padding: 0;
+    margin: 0;
+}
+p, span {
+    font-size: 14px;
+}
+
+
+
+/* 헤더 */
+#desktop-header {
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid lightgray;
+  margin-top: -150px;
+}
+#desktop-header #desktop-header-wrapper {
+  max-width: 950px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 헤더 - 로고 */
+#desktop-header-wrapper #logo-wrapper {
+  width: 33.3%;
+}
+#desktop-header-wrapper #logo-wrapper img {
+  width: 40%;
+  height: 40%;
+}
+
+
+#desktop-header-wrapper #search-wrapper img {
+  width: 4%;
+  opacity: 0.5;
+}
+#desktop-header-wrapper #search-wrapper p {
+  margin-left: 2%;
+  font-size: 13px;
+}
+
+
+/*중앙 비밀번호를 잊으셨나요 프레임*/
+.container {
+    width: 350px;
+    height: max-content;
+    margin: 150px auto 100px auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    background-color: #fff;
+    border: 1px solid #DBDBDB;
+}
+img.logo_instagram {
+    align-self: center;
+    width: 175px;
+    margin: 0;
+}
+
+.comment {
+    width: 270px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.input_wrap {
+    margin-top: 20px;
+}
+
+.input_login {
+    width: 270px;
+    height: 40px;
+    margin: 3px auto;
+    padding: 0 10px;
+    display: block;
+    background-color: #fafafa;
+    border: 1px solid #DBDBDB;
+    border-radius: 3px;
+    font-size: 14px;
+}
+.input_login::placeholder {
+    font-size: 12px;
+    color: #8e8e8e;
+}
+.input_login:focus {
+    border: 1px solid #8a8a8a;
+    outline: none;
+}
+#btn_login {
+
+    width: 268px;
+    height: 30px;
+    margin-top: 13px;
+    margin-left: 41px;
+    background-color: #0095f6;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+#btn_login:disabled {
+    background-color: #B9DFFC;
+}
+#btn_login:disabled:hover {
+    cursor: default;
+}
+#btn_login:enabled:hover {
+    cursor: pointer;
+}
+#btn_login:focus {
+    outline: none;
+}
+a {
+    cursor: default;
+}
+
+
+/*또는*/
+.or {
+	padding: 35px 20px ;
+	position: relative;
+}
+.or:after {
+	content: "";
+	width: 100%;
+	height: 1px;
+	background: #adadad;
+	border-radius: 20px;
+	display: block;
+}
+.or span {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #fff;
+	color: #a3a3a3;
+	padding: 0 10px;
+}
+
+/*새계정 만들기*/
+.signup_button {
+    border: 0;
+    color: #0095f6;
+    display: inline;
+    padding: 0;
+    position: relative;
+    appearance: none;
+    background: 0 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: center;
+    text-transform: inherit;
+    text-overflow: ellipsis;
+    user-select: none;
+    width: auto;
+    margin-right: 0px;
+}
+
+.go_signup {
+    color: #385185;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+
+/*로그인으로 돌아가기*/
+.back_to_login_frame {
+    width: 350px;
+    height: 30px;
+    flex-wrap: wrap;
+    background-color: #f6f6f6;
+    display: flex;
+    margin: 10px auto 0 auto;
+    border : 1px solid lightgray;
+}
+
+
+.back_to_login {
+    font-weight: 600;
+    color : black;
+    margin: 0 auto;
+    align-self: center;
+    font-size: 12px;
+    cursor: pointer;
+
+}
+.back_to_login:hover {
+    cursor: pointer;
+}
+
+
+/*중앙 비밀번호를 잊으셨나요 프레임 끝*/
+
+/**
+ * Footer
+ */
+footer {
+
+    padding: 5rem 0;
+    display: flex;
+    align-items: flex-end;
+    /*font-weight: bold;*/
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin : 0 auto;
+    padding: 15px 0;
+}
+
+.bottom_container {
+    margin: 0 auto;
+}
+
+.footer-nav ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.footer-nav ul li {
+    margin-right: 1.6rem;
+}
+
+.footer-nav ul li a {
+    color: #003569;
+}
+
+.footer_bottom {
+    display: flex;
+    /*width: 90%;*/
+    justify-content: space-between;
+
+}
+
+.copyright-notice {
+    color: #999999;
+    justify-content: center;
+}
+
+.sign_form {
+    display: flex;
+    /*width: 90%;*/
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.btn-group {
+    margin-left: 300px;
+    margin-right: -100px;
+    display: flex;
+    border-radius: 0.25rem;
+    height: auto;
+    cursor: pointer;
+}
+
+.copyright-notice {
+    margin-right: 200px;
+    display: flex;
+    width: 500px;
+    border-radius: 0.25rem;
+    height: auto;
+    cursor: pointer;
+}
+
+/*Footer 끝*/
