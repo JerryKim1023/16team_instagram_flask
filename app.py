@@ -8,9 +8,9 @@ def main():
     return render_template("login.html")  # 처음 페이지
 
 
-@app.route('/detail')
+@app.route('/feedindex')
 def detail():
-    return render_template("detail.html")  # 상세페이지로 이동
+    return render_template("feedindex.html")  # 상세페이지로 이동
 
 
 @app.route('/sign_up')
@@ -18,27 +18,20 @@ def sign_up():
     return render_template('sign_up.html')  # 로그인 등록 작업이 완료되면 사용
 
 
-@app.route('/login')
-def login():
-    return render_template('login.html')  # 로그인 화면으로 이동
+@app.route('/mypage')
+def mypage():
+    return render_template('mypage.html')  # 마이페이지 작업이 완료되면 사용
 
 
-@app.route('/login_fail')
+@app.route('/forgot_password')
 def login_fail():
-    # return render_template('loginfail.html') # 로그인 실패 작업이 완료되면 사용
-    return 'Login fail..'
+    return render_template('forgot_password.html')  # 비밀번호 잊었을때 사용
 
 
 @app.route('/login_success')
 def login_success():
     # return render_template('loginsuccess.html') # 로그인 성공 작업이 완료되면 사용
     return 'Login success!'
-
-
-@app.route('/mypage')
-def mypage():
-    # return render_template('mypage.html') # 마이페이지 작업이 완료되면 사용
-    return 'This is mypage'
 
 
 if __name__ == '__main__':
