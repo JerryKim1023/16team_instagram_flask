@@ -1,29 +1,29 @@
-from flask import Flask, render_template, jsonify, request,redirect,url_for
+from flask import Flask, render_template, jsonify, request, redirect, url_for
 from pymongo import MongoClient
 import datetime
 import jwt
 import hashlib
 
 import certifi
+
 ca = certifi.where()
 
 app = Flask(__name__)
-client = MongoClient('mongodb+srv://AKBARI:sparta@cluster0.jujbu.mongodb.net/cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
+client = MongoClient('mongodb+srv://AKBARI:sparta@cluster0.jujbu.mongodb.net/cluster0?retryWrites=true&w=majority',
+                     tlsCAFile=ca)
 db = client.dbakbari
 
-
 SECRET_KEY = 'TEST'
-
 
 
 @app.route('/')
 def main():
     token_receive = request.cookies.get('mytoken')  # 토큰 가져오기
     try:
-        payload = jwt.decode(token_receive,SECRET_KEY, algorithms=['HS256']) # jwt decode
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])  # jwt decode
         print(payload)
-        user_info = db.user.find_one({'id':payload['id']})
-        return render_template('feedindex.html', user = user_info["name"])
+        user_info = db.user.find_one({'id': payload['id']})
+        return render_template('feedindex.html', user=user_info["name"])
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
     except jwt.exceptions.DecodeError:
@@ -106,17 +106,16 @@ def login_fail():
     return render_template('forgot_password.html')  # 비밀번호 잊었을때 사용
 
 
-# @app.route('/login_success')
-# def login_success():
-#     return render_template('feedindex.html') # 로그인 성공 작업이 완료되면 사용
-#     return 'Login success!'
+@app.route('/search')
+def search_redirection():
+    return render_template('search.html')  # 비밀번호 잊었을때 사용
 
 
 # comment 작성 구현
 @app.route("/comment", methods=["POST"])
 def comment_post():
-    comment_receive = request.form['comment_give'] # [POST] - 1
-    doc = { # [POST] - 2
+    comment_receive = request.form['comment_give']  # [POST] - 1
+    doc = {  # [POST] - 2
         'comment': comment_receive,
     }
     db.comment.insert_one(doc)
@@ -125,15 +124,21 @@ def comment_post():
 
 @app.route("/comment", methods=["GET"])
 def comment_get():
-    comment_list = list(db.comment.find({}, {'_id': False})) # [GET] - 1
-    return jsonify({'comments': comment_list}) # [GET] - 2
+    comment_list = list(db.comment.find({}, {'_id': False}))  # [GET] - 1
+    return jsonify({'comments': comment_list})  # [GET] - 2
 
 
+@app.route("/api/search", methods=['POST'])
+def search_db():
+    input = request.form['input_give']
 
+    rest_search = db.rest.find(
+        {"title": {"$regex": f".*{input}.*"}}, {"_id": False})
+    follow_search = db.follow.find(
+        {"title": {"$regex": f".*{input}.*"}}, {"_id": False})
+
+    return jsonify({'insta_search': list(rest_search) + list(follow_search)}), 200
 
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
-
-
-
