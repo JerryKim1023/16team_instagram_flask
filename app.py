@@ -3,16 +3,12 @@ from pymongo import MongoClient
 import datetime
 import jwt
 import hashlib
-
 import certifi
-
 ca = certifi.where()
-
 app = Flask(__name__)
 client = MongoClient('mongodb+srv://AKBARI:sparta@cluster0.jujbu.mongodb.net/cluster0?retryWrites=true&w=majority',
                      tlsCAFile=ca)
 db = client.dbakbari
-
 SECRET_KEY = 'TEST'
 
 
