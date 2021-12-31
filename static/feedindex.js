@@ -21,8 +21,9 @@ function show_comment() {
     });
 }
 
+
 function save_comment() {
-    let comment = $('#comment-box').val() // [POST] - 5
+    let comment = $('#comment').val() // [POST] - 5
     $.ajax({
         type: "POST",
         url: "/comment",
