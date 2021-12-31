@@ -4,64 +4,151 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="mymobile.css">
-    <link rel="stylesheet" media="(min-width: 860px)" href="myweb.css">
-
-    <link rel="stylesheet" href="../static/feedmobile.css">
-    <link rel="stylesheet" media="(min-width: 860px)" href="../static/feedweb.css">
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-
-    <title>Search</title>
-
-    <style>
-          .flex-container{
-            width: 60%;
-            height: auto;
-
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            margin: 4% auto;
-            margin: 0% auto;
-        }
-
-    </style>
-
+    <link rel="stylesheet" href="searchmobile.css">
+    <link rel="stylesheet" media="(min-width: 860px)" href="seachweb.css">
+    <title>Instagram</title>
 </head>
 <body>
-<div id="main">
-    <div id="mobile-header">
-        <img class="header-icon" src="https://i.imgur.com/DBcXbOE.png"/>
-        <img id="logo" src="https://i.imgur.com/BhB0ET4.png"/>
-        <img class="header-icon" src="https://i.imgur.com/itaPUxe.png"/>
-    </div>
-    <div id="desktop-header">
-        <div id="desktop-header-wrapper">
-            <div id="logo-wrapper">
-                <img src="https://i.imgur.com/BhB0ET4.png"/>
-            </div>
-
-
-            <div id="search-wrapper">
-                <input type="text" placeholder="Search..." class="search-input" id="input_search" onkeyup="enterkey()"
-                       name="q">
-            </div>
-
-
-            <div id="header-icon-wrapper">
-                <img class="header-icon" src="https://i.imgur.com/obZ4GI0.png"/>
-                <img class="header-icon" src="https://i.imgur.com/p9T8Jgd.png"/>
-                <img class="header-icon" src="https://i.imgur.com/jwVoZUU.png"/>
-                <img class="header-icon" src="https://i.imgur.com/n0hgaRi.png"/>
+    <div id="main">
+        <div id="mobile-header">
+            <img class="header-icon" src="https://i.imgur.com/DBcXbOE.png"/>
+            <img id="logo" src="https://i.imgur.com/BhB0ET4.png"/>
+            <img class="header-icon" src="https://i.imgur.com/itaPUxe.png"/>
+        </div>
+        <div id="desktop-header">
+            <div id="desktop-header-wrapper">
+                <div id="logo-wrapper">
+                    <img src="https://i.imgur.com/BhB0ET4.png"/>
+                </div>
+                <div id="search-wrapper">
+                    <img src="https://i.imgur.com/V7VUmWq.png">
+                    <p>검색</p>
+                </div>
+                <div id="header-icon-wrapper">
+                    <img class="header-icon" src="https://i.imgur.com/obZ4GI0.png"/>
+                    <img class="header-icon" src="https://i.imgur.com/p9T8Jgd.png"/>
+                    <img class="header-icon" src="https://i.imgur.com/jwVoZUU.png"/>
+                    <img class="header-icon" src="https://i.imgur.com/n0hgaRi.png"/>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="search-box" class="flex-container">
-    </div>
+        <div id="container">
+            <div id="main-container">
+                <div id="search-container">
+                    <div class="search-wrapper">
+                        <div class="search-word">
+                            <h1><b>#검색어</b></h1>
+                        </div>
+                        <div class="search-set">
+                        <ul class="search-info">
+                            <li class="search-post">
+                                <a class="search-post" href="url" tabindex="0">
+                                    게시물
+                                    <span class="search-post">31,413</span>
+                                </a>
+                                </span>
+                            </li>
+                        </ul>
+                        </div>
+                        <div>
 
-    <script src="../static/redirection.js"></script>
-    <script src="../static/db_search.js"></script>
+                        </div>
+                    </div>
+                </div>
+
+
+                <hr>
+                <div class="photo-container">
+                    <div class="photo-wrapper">
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                    </div>
+                    <div class="photo-wrapper">
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                    </div>
+                    <div class="photo-wrapper">
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                    </div>
+                    <div class="photo-wrapper">
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                    </div>
+                    <div class="photo-wrapper">
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                    </div>
+                    <div class="photo-wrapper">
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                    </div>
+                    <div class="photo-wrapper">
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                    </div>
+                    <div class="photo-wrapper">
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                        <div class="photoset">
+                            <img src="https://i.imgur.com/pI11x13.jpg">
+                        </div>
+                    </div>
+
+                </div>
+        </div>
 </body>
 </html>
