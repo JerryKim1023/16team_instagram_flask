@@ -38,4 +38,3 @@ document.addEventListener('keyup', function(event) {
 function to_main() {
     window.location.href = "https://pienergy.shop"
 }
-
