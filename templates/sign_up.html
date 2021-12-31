@@ -16,7 +16,8 @@
     <!--     CSS 파일 불러오기-->
     <link rel="stylesheet" href="../static/login.css" type="text/css">
     <link rel="stylesheet" href="../static/common.css" type="text/css">
-
+<!--    페이스북 로그인연동 js-->
+    <script src="../static/facebook.js"></script>
     <script>
         // 회원가입 부분 ajax 구현
         function sign_up() {
@@ -47,6 +48,13 @@
 
 </head>
 <body>
+<!--페이스북 로그인 설정을 위한 js-->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v12.0&appId=439520574345603&autoLogAppEvents=1"
+        nonce="LERSqlEj"></script>
+
+
 <section class="whole_wrap">
     <main class="main">
         <article class="article">
@@ -60,10 +68,16 @@
                     <img onclick="to_main()" class="logo_instagram" src="https://i.imgur.com/BhB0ET4.png"
                          alt="instagram_logo">
 
-                    <button class="facebook_button" type="button">
-                        <span class="facebook_icon"></span>
-                        <span class="facebook_login">Facebook으로 로그인</span>
-                    </button>
+                    <!--                        이전 페이스북 샘플 버튼-->
+                    <!--                    <button class="facebook_button" type="button">-->
+                    <!--                        <span class="facebook_icon"></span>-->
+                    <!--                        <span class="facebook_login">Facebook으로 로그인</span>-->
+                    <!--                    </button>-->
+                    <!--                    페이스북로그인 연동 버튼-->
+                    <div class="fb-login-button" scope="public_profile,email,publish_pages,manage_pages"
+                         data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true"
+                         data-auto-logout-link="true" data-use-continue-as="true" onlogin="fbLogin();"></div>
+
 
                     <div class="or">
                         <span>또는</span>
@@ -78,8 +92,8 @@
                            placeholder="사용자 이름">
                     <input type="password" class="input_login" name="user_sign_PW" id="user_sign_PW" placeholder="비밀번호">
                     <a href="#none">
-<!--                        가입 버튼 활성화-->
-                        <button onclick="sign_up()" type="button" id="btn_login" >가입</button>
+                        <!--                        가입 버튼 활성화-->
+                        <button onclick="sign_up()" type="button" id="btn_login">가입</button>
                     </a>
 
 
