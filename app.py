@@ -1,9 +1,11 @@
 from flask import Flask, render_template, jsonify, request
 from pymongo import MongoClient
 
-app = Flask(__name__)
+import certifi
+ca = certifi.where()
 
-client = MongoClient('mongodb+srv://AKBARI:sparta@cluster0.jujbu.mongodb.net/cluster0?retryWrites=true&w=majority')
+app = Flask(__name__)
+client = MongoClient('mongodb+srv://AKBARI:sparta@cluster0.jujbu.mongodb.net/cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbakbari
 
 import hashlib
