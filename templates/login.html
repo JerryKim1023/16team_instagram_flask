@@ -6,6 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
@@ -23,6 +24,33 @@
     <!--    페이스북 로그인연동 js-->
     <script src="../static/facebook.js"></script>
 
+    <script>
+        function login() {
+            let username = $('#input-username').val()
+            let password = $('#input-password').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/login",
+                data: {
+                    username_give: username,
+                    password_give: password
+                },
+                success: function (response) {
+                    if (response['result'] == 'success') {
+                       alert(response['token'])
+                        $.cookie('mytoken', response['token'], {path:'/'})
+                        window.location.replace('/')
+
+                    } else {
+                        alert(response['msg'])
+                    }
+                }
+            });
+        }
+
+
+    </script>
 
 </head>
 <body>
@@ -45,12 +73,11 @@
                 <div class="container">
                     <img onclick="to_main()" class="logo_instagram" src="https://i.imgur.com/BhB0ET4.png"
                          alt="instagram_logo">
-                    <input type="text" class="input_login" name="userID" id="userID"
+                    <input type="text" class="input_login" id="input-username"
                            placeholder="전화번호, 사용자 이름 또는 이메일">
-                    <input type="password" class="input_login" name="userPW" id="userPW" placeholder="비밀번호">
-                    <a href="#none">
-                        <button id="btn_login" disabled><a href="/feedindex">로그인</a></button>
-                    </a>
+                    <input type="password" class="input_login" id="input-password" placeholder="비밀번호">
+<!--                        <button id="btn_login" disabled><a href="/feedindex">로그인</a></button>-->
+                        <button onclick="login()" type="button" id="btn_login">로그인</button>
                     <div class="or">
                         <span>또는</span>
                     </div>

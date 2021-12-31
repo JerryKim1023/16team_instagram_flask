@@ -1,5 +1,8 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request,redirect,url_for
 from pymongo import MongoClient
+import datetime
+import jwt
+import hashlib
 
 import certifi
 ca = certifi.where()
@@ -8,12 +11,23 @@ app = Flask(__name__)
 client = MongoClient('mongodb+srv://AKBARI:sparta@cluster0.jujbu.mongodb.net/cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbakbari
 
-import hashlib
+
+SECRET_KEY = 'TEST'
+
 
 
 @app.route('/')
 def main():
-    return render_template("login.html")  # 처음 페이지
+    token_receive = request.cookies.get('mytoken')  # 토큰 가져오기
+    try:
+        payload = jwt.decode(token_receive,SECRET_KEY, algorithms=['HS256']) # jwt decode
+        print(payload)
+        user_info = db.user.find_one({'id':payload['id']})
+        return render_template('feedindex.html', user = user_info["name"])
+    except jwt.ExpiredSignatureError:
+        return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
+    except jwt.exceptions.DecodeError:
+        return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
 
 @app.route("/api/random_show", methods=['POST'])
@@ -35,11 +49,8 @@ def detail():
 @app.route('/sign_up', methods=['POST'])
 def sign_up():
     userEmail_receive = request.form['userEmail_give']
-
     userName_receive = request.form['userName_give']
-
     user_sign_ID_receive = request.form['user_sign_ID_give']
-
     user_sign_PW_receive = request.form['user_sign_PW_give']
 
     # PW 해쉬 적용
@@ -51,8 +62,32 @@ def sign_up():
     return jsonify({'result': 'success'})
 
 
-@app.route('/login')
+@app.route('/login', methods=['POST'])
 def login():
+    username_receive = request.form['username_give']
+    password_receive = request.form['password_give']
+
+    # 해쉬 적용
+    pw_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
+    # id hash된 pw 가지고 유저 찾기
+    result = db.user.find_one({'id': username_receive, 'pw': pw_hash})
+
+    # db에서 찾으면 JWT 토큰 발급
+    if result is not None:
+        payload = {
+            'id': username_receive,
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=30)  # 만료시간 30초 세팅
+        }
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
+        # token 리턴
+        return jsonify({'result': 'success', 'token': token})
+    # db에서 찾지 못하면
+    else:
+        return jsonify({'result': 'fail', 'msg': '아이디/비밀번호를 확인해 주세요.'})
+
+
+@app.route('/login')
+def login_after():
     return render_template('login.html')  # 로그인 화면으로 이동
 
 
@@ -71,10 +106,10 @@ def login_fail():
     return render_template('forgot_password.html')  # 비밀번호 잊었을때 사용
 
 
-@app.route('/login_success')
-def login_success():
-    # return render_template('loginsuccess.html') # 로그인 성공 작업이 완료되면 사용
-    return 'Login success!'
+# @app.route('/login_success')
+# def login_success():
+#     return render_template('feedindex.html') # 로그인 성공 작업이 완료되면 사용
+#     return 'Login success!'
 
 
 # comment 작성 구현
