@@ -122,6 +122,16 @@ def search_db():
 
     return jsonify({'insta_search': list(rest_search) + list(follow_search)}), 200
 
+@app.route("/api/mailsearch", methods=['POST'])
+def search_mail():
+    input = request.form['input_give']
+
+    # same_ages = list(db.users.find({'age':21},{'_id':False}))
+
+    mail_search = list(db.user.find({'email':input},{'_id':False}))
+
+    return jsonify({'mail_search': mail_search})
+
 
 # comment 작성 구현_01
 @app.route("/comment_01", methods=["POST"])
