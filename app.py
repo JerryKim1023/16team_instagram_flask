@@ -111,23 +111,6 @@ def search_redirection():
     return render_template('search.html')  # 비밀번호 잊었을때 사용
 
 
-# comment 작성 구현
-@app.route("/comment", methods=["POST"])
-def comment_post():
-    comment_receive = request.form['comment_give']  # [POST] - 1
-    doc = {  # [POST] - 2
-        'comment': comment_receive,
-    }
-    db.comment.insert_one(doc)
-    return jsonify({'msg': '등록 완료!'})
-
-
-@app.route("/comment", methods=["GET"])
-def comment_get():
-    comment_list = list(db.comment.find({}, {'_id': False}))  # [GET] - 1
-    return jsonify({'comments': comment_list})  # [GET] - 2
-
-
 @app.route("/api/search", methods=['POST'])
 def search_db():
     input = request.form['input_give']
@@ -138,6 +121,36 @@ def search_db():
         {"title": {"$regex": f".*{input}.*"}}, {"_id": False})
 
     return jsonify({'insta_search': list(rest_search) + list(follow_search)}), 200
+
+
+# comment 작성 구현_01
+@app.route("/comment_01", methods=["POST"])
+def comment_post_01():
+    comment_receive_01 = request.form['comment_give_01']
+    doc = {'comment_01': comment_receive_01}
+    db.comment_01.insert_one(doc)
+    return jsonify({'msg': '등록 완료!'})
+
+
+@app.route("/comment_01", methods=["GET"])
+def comment_get_01():
+    comment_list_01 = list(db.comment_01.find({}, {'_id': False}))
+    return jsonify({'comments_01': comment_list_01})
+
+
+# comment 작성 구현_02
+@app.route("/comment_02", methods=["POST"])
+def comment_post_02():
+    comment_receive_02 = request.form['comment_give_02']
+    doc = {'comment_02': comment_receive_02}
+    db.comment_02.insert_one(doc)
+    return jsonify({'msg': '등록 완료!'})
+
+
+@app.route("/comment_02", methods=["GET"])
+def comment_get_02():
+    comment_list_02 = list(db.comment_02.find({}, {'_id': False}))
+    return jsonify({'comments_02': comment_list_02})
 
 
 if __name__ == '__main__':

@@ -153,43 +153,97 @@ body {
 
 /* 포스트 - 푸터 */
 .post-footer {
-  padding-left: 2%;
+
 }
+
 .post-footer .post-like-wrapper {
-  display: flex;
-  align-items: center;
-  margin-left: 1%;
-  margin-top: 1%;
-  margin-bottom: 1%;
+    display: flex;
+    align-items: center;
+    padding-left: 1%;
+    /*margin-left: 1%;*/
+    margin-top: 2%;
+    margin-bottom: 0%;
 }
+
 .post-footer .post-like-wrapper img {
-  width: 3vw;
-  border-radius: 50%;
-  border: 1px solid lightgray;
-  margin: 0 1%;
+    width: 3vw;
+    border-radius: 50%;
+    border: 1px solid lightgray;
+    margin: 0 1%;
 }
+
 .post-footer .post-like-wrapper p {
-  margin-bottom: 2%;
-  margin-top: 2%;
-  font-size: 14px;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    font-size: 14px;
 }
-.post-footer .post-content-wrapper {
-  display: flex;
+
+.post-footer .post-content-wrapper .comment-box {
+    /*display: flex;*/
+    padding-left: 1%;
+    margin-bottom: 0.3%;
 }
+
 .post-footer .post-content-wrapper .post-author {
-  margin: 0% 2% 0% 2%;
-  font-weight: bold;
-  font-size: 14px;
+    margin: 0.2% 0.5% 0% 2%;
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-flex;
 }
+
 .post-footer .post-content-wrapper .post-content {
-  margin: 0%;
-  font-size: 14px;
+    margin: 0.2%;
+    font-size: 14px;
+    display: inline-flex;
 }
+
 .post-footer .post-time {
-  color: gray;
-  font-size: 10px;
-  margin-left: 2%;
-  margin-top: 5%;
+    color: gray;
+    font-size: 12px;
+    padding-left: 3%;
+    padding-bottom: 2%;
+    /*margin-left: 2%;*/
+    /*margin-top: 3%;*/
+}
+
+.post-footer .comment-container {
+    border-top: 1px solid lightgray;
+    /*width: 100%;*/
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2% 0 2%;
+}
+
+.post-footer .comment-container .comment-left-side {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.post-footer .comment-container .comment-left-side img {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding-left: 2px;
+}
+
+.post-footer .comment-container .comment-left-side .comment {
+    width: 480px;
+    border: None;
+    font-size: 16px;
+    background-color: #fbfbfb;
+    outline: None;
+    color: gray;
+}
+
+.post-footer .comment-container .comment-button {
+    border: None;
+    background-color: #fbfbfb;
+    font-size: 16px;
+    color: #2ea2f6;
+    font-weight: bold;
 }
 
 /* 푸터 */
