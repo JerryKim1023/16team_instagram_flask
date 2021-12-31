@@ -71,10 +71,9 @@ def login_fail():
     return render_template('forgot_password.html')  # 비밀번호 잊었을때 사용
 
 
-@app.route('/login_success')
-def login_success():
-    # return render_template('loginsuccess.html') # 로그인 성공 작업이 완료되면 사용
-    return 'Login success!'
+@app.route('/search')
+def search_redirection():
+    return render_template('search.html')  # 비밀번호 잊었을때 사용
 
 
 # comment 작성 구현
@@ -93,7 +92,16 @@ def comment_get():
     comment_list = list(db.comment.find({}, {'_id': False})) # [GET] - 1
     return jsonify({'comments': comment_list}) # [GET] - 2
 
+@app.route("/api/search", methods=['POST'])
+def search_db():
+    input = request.form['input_give']
 
+    rest_search = db.rest.find(
+        {"title": {"$regex": f".*{input}.*"}}, {"_id": False})
+    follow_search = db.follow.find(
+        {"title": {"$regex": f".*{input}.*"}}, {"_id": False})
+
+    return jsonify({'insta_search': list(rest_search)+list(follow_search)}), 200
 
 
 
