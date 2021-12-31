@@ -106,7 +106,7 @@ function mail_search() {
         success: function (response) {
             console.log(response)
             let mail_search = response['mail_search']
-            let email = mail_search[0]['pw']
+            let email = mail_search['email', 'pw'][1]
 
             if (mail_search == false) {
                 alert('메일 입력 값이 없습니다 : ');

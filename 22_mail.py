@@ -12,7 +12,8 @@ app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
-@app.route('/forgot_password',  methods=['POST'])
+
+@app.route('/forgot_password', methods=['POST'])
 def index():
     userEmail = request.form['userEmail_pw_give']
     # 메시지 제목
@@ -21,9 +22,10 @@ def index():
     msg.body = "Hello Flask message sent from Coder'stagram-Flask-Mail" \
                "[user pw 변수값]"
     mail.send(msg)
+
+    user_pw = list(db.user.find({}, {'_id': False}))
+
     return 'sent'
-
-
 
 
 if __name__ == '__main__':
