@@ -29,6 +29,24 @@
             let username = $('#input-username').val()
             let password = $('#input-password').val()
 
+            if (username == "") {
+                alert('아이디를 입력해주세요')
+                $("#input-username").focus()
+                return;
+            } else {
+                $("#input-password").focus()
+
+            }
+
+            if (password == "") {
+                alert('비밀번호를 입력해주세요')
+                $("#input-password").focus()
+                return;
+            } else {
+                {}
+            }
+
+
             $.ajax({
                 type: "POST",
                 url: "/login",
@@ -76,12 +94,10 @@
                     <input type="text" class="input_login" id="input-username"
                            placeholder="전화번호, 사용자 이름 또는 이메일">
                     <input type="password" class="input_login" id="input-password" placeholder="비밀번호">
-<!--                        <button id="btn_login" disabled><a href="/feedindex">로그인</a></button>-->
                         <button onclick="login()" type="button" id="btn_login">로그인</button>
                     <div class="or">
                         <span>또는</span>
                     </div>
-
                     <!--                        이전 샘플 페이스북 로그인 버튼-->
                     <!--                    <button class="facebook_button" type="button">-->
                     <!--                        <span class="facebook_icon"></span>-->

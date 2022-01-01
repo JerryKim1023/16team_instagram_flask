@@ -20,15 +20,46 @@
     <script src="../static/facebook.js"></script>
     <script>
         // 회원가입 부분 ajax 구현
+
+        function is_password(asValue) {
+            var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z!@#$%^&*]{8,20}$/;
+            return regExp.test(asValue);
+        }
+
         function sign_up() {
+            let userEmail = $('#userEmail').val()
+            let userName = $('#userName').val()
+            let user_sign_ID = $('#user_sign_ID').val()
+            let user_sgin_PW = $('#user_sign_PW').val()
+
+            if (userEmail == "") {
+                alert('이메일을 입력해주세요')
+                $("#userEmail").focus()
+                return;
+            }else if (userName == ""){
+                alert('성명을 입력해주세요')
+                 $("#userName").focus()
+                 return;
+            }else if (user_sign_ID == ""){
+                 $("#user_sign_ID").focus()
+                alert('아이디를 입력해주세요')
+                return;
+            }else if (user_sgin_PW == ""){
+                 $("#user_sign_PW").focus()
+                alert('비밀번호를 입력해주세요')
+                return;
+            }
+            else {
+            }
+
             $.ajax({
                 type: "POST",
                 url: "/sign_up",
                 data: {
-                    userEmail_give: $('#userEmail').val(),
-                    userName_give: $('#userName').val(),
-                    user_sign_ID_give: $('#user_sign_ID').val(),
-                    user_sign_PW_give: $('#user_sign_PW').val()
+                    userEmail_give: userEmail,
+                    userName_give: userName,
+                    user_sign_ID_give: user_sign_ID,
+                    user_sign_PW_give: user_sgin_PW
 
                 },
                 success: function (response) {
