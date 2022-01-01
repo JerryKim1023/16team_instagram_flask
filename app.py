@@ -74,7 +74,11 @@ def login():
             'id': username_receive,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=30)  # 만료시간 30초 세팅
         }
-        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8')
+        # 로컬에서는 pyJWT가 최신버전이라 디코드를 안해도 스트링값으로 반환
+        # ec2에서는 pyJWT가 decode를 안하면 바이너리값으로 반환해서
+        # 디코드해서 스트링값으로 반환해줘야함.
+
         # token 리턴
         return jsonify({'result': 'success', 'token': token})
     # db에서 찾지 못하면
