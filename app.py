@@ -72,7 +72,7 @@ def login():
     if result is not None:
         payload = {
             'id': username_receive,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=30)  # 만료시간 30초 세팅
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1)  # 만료시간 세팅
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
         # token 리턴
