@@ -65,16 +65,29 @@ p, span {
     position: relative;
 }
 
-.insta_pic {
+#insta_pic_sign{
     height: 427px;
     left: 0;
-    opacity: 0;
+    opacity: 1;
     position: absolute;
     top: 0;
-    visibility: hidden;
+    /*visibility: hidden;*/
     width: 240px;
 }
 /*왼쪽 프레임 끝*/
+#insta_pic_log{
+    height: 427px;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    /*visibility: hidden;*/
+    width: 240px;
+}
+
+
+
+
 
 
    /*우측프레임*/

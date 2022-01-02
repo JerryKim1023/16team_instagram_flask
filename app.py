@@ -19,7 +19,7 @@ def main():
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])  # jwt decode
         print(payload)
         user_info = db.user.find_one({'id': payload['id']})
-        return render_template('feedindex.html', user=user_info["name"])
+        return render_template('feedindex.html', user=user_info["id"])
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
     except jwt.exceptions.DecodeError:
@@ -74,7 +74,10 @@ def login():
             'id': username_receive,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1)  # 만료시간 세팅
         }
-        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8')
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')\
+            # .decode('utf-8')
+
+
         # 로컬에서는 pyJWT가 최신버전이라 디코드를 안해도 스트링값으로 반환
         # ec2에서는 pyJWT가 decode를 안하면 바이너리값으로 반환해서
         # 디코드해서 스트링값으로 반환해줘야함.
