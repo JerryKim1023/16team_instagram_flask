@@ -121,6 +121,8 @@ function mainpost_show() {
                 let img = shows[i]['image']
                 let id = shows[i]['id']
                 let like = shows[i]['like']
+                let comment = shows[i]['comment']
+                let docu_id = shows[i]['docu_id']
 
 
                 let temp_html = ` <div class="post-wrapper">
@@ -158,9 +160,9 @@ function mainpost_show() {
                         <div class="comment-container">
                             <div class="comment-left-side">
                                 <img src="${img}">
-                                <input id="comment_01" class="comment" type="text" placeholder="댓글달기...">
+                                <input class="comment" type="text" placeholder="댓글달기...">
                             </div>
-                            <button onclick="save_comment_01()" type="button" class="comment-button">게시</button>
+                            <button onclick="post_comment()" type="button" class="comment-button">게시</button>
                         </div>
                     </div>
                 </div>
