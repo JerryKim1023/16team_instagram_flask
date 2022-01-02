@@ -43,7 +43,8 @@
                 $("#input-password").focus()
                 return;
             } else {
-                {}
+                {
+                }
             }
 
 
@@ -56,8 +57,8 @@
                 },
                 success: function (response) {
                     if (response['result'] == 'success') {
-                       alert('로그인 완료!')
-                        $.cookie('mytoken', response['token'], {path:'/'})
+                        alert('로그인 완료!')
+                        $.cookie('mytoken', response['token'], {path: '/'})
                         window.location.replace('/')
 
                     } else {
@@ -84,7 +85,9 @@
         <article class="article">
             <div class="left_frame">
                 <div class="left_container">
-                    <img alt="" class="insta_pic" src="https://i.imgur.com/PSSCGyf.png">
+                    <!--                    <img alt="" class="insta_pic" src="https://i.imgur.com/PSSCGyf.png">-->
+                    <img id="insta_pic_log" class="insta_pic"
+                         src="https://cdn.pixabay.com/photo/2020/05/06/12/32/binary-5137349_960_720.jpg">
                 </div>
             </div>
             <div class="right_frame">
@@ -94,7 +97,7 @@
                     <input type="text" class="input_login" id="input-username"
                            placeholder="전화번호, 사용자 이름 또는 이메일">
                     <input type="password" class="input_login" id="input-password" placeholder="비밀번호">
-                        <button onclick="login()" type="button" id="btn_login">로그인</button>
+                    <button onclick="login()" type="button" id="btn_login">로그인</button>
                     <div class="or">
                         <span>또는</span>
                     </div>
@@ -200,6 +203,58 @@
         </div>
     </footer>
 </section>
+
+
+<script>
+    // let start_fun;
+    let op_count = 0;
+    let settime_func;
+    let settime1_func;
+
+    // window.onload = function () {
+    //     start_fun = setTimeout(fade_in, 100)
+    // }
+
+
+    function fade_in() {
+        op_count = op_count + 0.1;
+
+        insta_pic_log.style.opacity = op_count;
+        settime_func = setTimeout(fade_in, 100);
+        if (op_count > 1) {
+            clearTimeout(settime_func);
+            settime1_func = setTimeout(fade_out, 3000);
+            op_count = 1;
+        }
+    }
+
+    function fade_out() {
+        op_count = op_count - 0.1;
+
+        insta_pic_log.style.opacity = op_count;
+        settime_func = setTimeout(fade_out, 200);
+        if (op_count < 0) {
+            clearTimeout(settime_func);
+            op_count = 0;
+        }
+
+    }
+
+    let image = document.getElementById('insta_pic_log');
+    let images = ['https://i.imgur.com/k0OzZ9Q.jpg',
+        'https://cdn.pixabay.com/photo/2020/05/06/12/32/binary-5137349_960_720.jpg',
+        'https://cdn.pixabay.com/photo/2020/04/11/18/05/red-matrix-5031496_960_720.jpg',
+        'https://cdn.pixabay.com/photo/2019/03/03/14/38/hacker-4031973_960_720.jpg']
+    setInterval(function () {
+        // fade_out()
+        fade_in()
+        let random = Math.floor(Math.random() * 4);
+        image.src = images[random];
+        op_count = 0;
+    }, 6000) // 기존 200차이났었음
+
+</script>
+
 <script src="../static/login.js"></script>
 </body>
 </html>

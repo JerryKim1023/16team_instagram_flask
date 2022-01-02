@@ -16,7 +16,7 @@
     <!--     CSS 파일 불러오기-->
     <link rel="stylesheet" href="../static/login.css" type="text/css">
     <link rel="stylesheet" href="../static/common.css" type="text/css">
-<!--    페이스북 로그인연동 js-->
+    <!--    페이스북 로그인연동 js-->
     <script src="../static/facebook.js"></script>
     <script>
         // 회원가입 부분 ajax 구현
@@ -36,20 +36,19 @@
                 alert('이메일을 입력해주세요')
                 $("#userEmail").focus()
                 return;
-            }else if (userName == ""){
+            } else if (userName == "") {
                 alert('성명을 입력해주세요')
-                 $("#userName").focus()
-                 return;
-            }else if (user_sign_ID == ""){
-                 $("#user_sign_ID").focus()
+                $("#userName").focus()
+                return;
+            } else if (user_sign_ID == "") {
+                $("#user_sign_ID").focus()
                 alert('아이디를 입력해주세요')
                 return;
-            }else if (user_sgin_PW == ""){
-                 $("#user_sign_PW").focus()
+            } else if (user_sgin_PW == "") {
+                $("#user_sign_PW").focus()
                 alert('비밀번호를 입력해주세요')
                 return;
-            }
-            else {
+            } else {
             }
 
             $.ajax({
@@ -76,7 +75,6 @@
     </script>
 
 
-
 </head>
 <body>
 <!--페이스북 로그인 설정을 위한 js-->
@@ -91,7 +89,8 @@
         <article class="article">
             <div class="left_frame">
                 <div class="left_container">
-                    <img alt="" class="insta_pic" src="https://i.imgur.com/PSSCGyf.png">
+                    <img id="insta_pic_sign" class="insta_pic"
+                         src="https://cdn.pixabay.com/photo/2020/05/06/12/32/binary-5137349_960_720.jpg">
                 </div>
             </div>
             <div class="right_frame">
@@ -218,6 +217,58 @@
         </div>
     </footer>
 </section>
+
+<script>
+    // let start_fun;
+    let op_count = 0;
+    let settime_func;
+    let settime1_func;
+
+    // window.onload = function () {
+    //     start_fun = setTimeout(fade_in, 100)
+    // }
+
+
+    function fade_in() {
+        op_count = op_count + 0.1;
+
+        insta_pic_sign.style.opacity = op_count;
+        settime_func = setTimeout(fade_in, 200);
+        if (op_count > 1) {
+            clearTimeout(settime_func);
+            settime1_func = setTimeout(fade_out, 2000);
+            op_count = 1;
+        }
+    }
+
+    function fade_out() {
+        op_count = op_count - 0.1;
+
+        insta_pic_sign.style.opacity = op_count;
+        settime_func = setTimeout(fade_out, 200);
+        if (op_count < 0) {
+            clearTimeout(settime_func);
+            op_count = 0;
+        }
+
+    }
+
+    let image = document.getElementById('insta_pic_sign');
+    let images = ['https://i.imgur.com/k0OzZ9Q.jpg',
+        'https://cdn.pixabay.com/photo/2020/05/06/12/32/binary-5137349_960_720.jpg',
+        'https://cdn.pixabay.com/photo/2020/04/11/18/05/red-matrix-5031496_960_720.jpg',
+        'https://cdn.pixabay.com/photo/2019/03/03/14/38/hacker-4031973_960_720.jpg']
+    setInterval(function () {
+        fade_in()
+        let random = Math.floor(Math.random() * 4);
+        image.src = images[random];
+        op_count = 0;
+
+
+    }, 6000)
+
+</script>
+
 <script src="../static/login.js"></script>
 </body>
 </html>
