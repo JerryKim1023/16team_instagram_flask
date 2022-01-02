@@ -27,16 +27,16 @@
         }
 
         function sign_up() {
-            let userEmail = $('#userEmail').val()
+            let userEmail = $('#userEmail').val()  //입력 받은 값을 변수에 저장!
             let userName = $('#userName').val()
             let user_sign_ID = $('#user_sign_ID').val()
             let user_sgin_PW = $('#user_sign_PW').val()
 
-            if (userEmail == "") {
-                alert('이메일을 입력해주세요')
-                $("#userEmail").focus()
+            if (userEmail == "") {         // 빈칸이면
+                alert('이메일을 입력해주세요')  // 출력
+                $("#userEmail").focus()   // 이메일칸 focus
                 return;
-            } else if (userName == "") {
+            } else if (userName == "") {   // 나머지 동일
                 alert('성명을 입력해주세요')
                 $("#userName").focus()
                 return;
@@ -51,20 +51,20 @@
             } else {
             }
 
-            $.ajax({
+            $.ajax({      // 서버로 요청
                 type: "POST",
                 url: "/sign_up",
                 data: {
-                    userEmail_give: userEmail,
+                    userEmail_give: userEmail,     // 값 보내기
                     userName_give: userName,
                     user_sign_ID_give: user_sign_ID,
                     user_sign_PW_give: user_sgin_PW
 
                 },
                 success: function (response) {
-                    if (response['result'] == 'success') {
-                        alert('회원가입이 완료되었습니다.')
-                        window.location.href = '/login'
+                    if (response['result'] == 'success') {  // success 값을 받아오면
+                        alert('회원가입이 완료되었습니다.')    // 완료 문구 출력
+                        window.location.href = '/login'   // login 페이지로 이동
                     } else {
                         alert(response['msg'])
                     }

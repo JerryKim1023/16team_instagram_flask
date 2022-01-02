@@ -26,15 +26,15 @@
 
     <script>
         function login() {
-            let username = $('#input-username').val()
+            let username = $('#input-username').val()  // 받아온 값 변수에 저장
             let password = $('#input-password').val()
 
-            if (username == "") {
+            if (username == "") {                  // 빈칸이면 실행
                 alert('아이디를 입력해주세요')
                 $("#input-username").focus()
                 return;
             } else {
-                $("#input-password").focus()
+                $("#input-password").focus()       // 빈칸이 아니라면 다음 칸 focus
 
             }
 
@@ -52,13 +52,13 @@
                 type: "POST",
                 url: "/login",
                 data: {
-                    username_give: username,
+                    username_give: username,   // 값 보내기
                     password_give: password
                 },
-                success: function (response) {
+                success: function (response) {                  // success 값을 받았다면
                     if (response['result'] == 'success') {
                         alert('로그인 완료!')
-                        $.cookie('mytoken', response['token'], {path: '/'})
+                        $.cookie('mytoken', response['token'], {path: '/'})  // mytoken이라는 key값으로 쿠키에 저장
                         window.location.replace('/')
 
                     } else {

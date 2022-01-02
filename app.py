@@ -15,14 +15,17 @@ SECRET_KEY = 'TEST'
 
 @app.route('/')
 def main():
-    token_receive = request.cookies.get('mytoken')  # 토큰 가져오기
+    token_receive = request.cookies.get('mytoken')  # 이용자 컴퓨터에 저장된 쿠키에서 mytoken 가져오기
     try:
-        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])  # jwt decode
+        # 암호화된 token 값을 사용할 수 있도록 디코딩!
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         print(payload)
-        user_info = db.user.find_one({'id': payload['id']})
-        return render_template('feedindex.html', user=user_info["id"])
+        user_info = db.user.find_one({'id': payload['id']}) #id 값 찾아서 가져오기
+        return render_template('feedindex.html', user=user_info["id"]) # 페이지로 이동 및 id 값 넘겨주기
+    # 해당 토큰이 만료 되었다면 아래의 코드 실행
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
+    # 해당 토큰이 올바르게 디코딩되지 않으면 아래의 코드 실행
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
@@ -39,45 +42,59 @@ def show_random():
 
 @app.route('/feedindex')
 def detail():
-
-    return render_template("feedindex.html")  # 상세페이지로 이동
+    token_receive = request.cookies.get('mytoken')  # 이용자 컴퓨터에 저장된 쿠키에서 mytoken 가져오기
+    try:
+        # 암호화된 token 값을 사용할 수 있도록 디코딩!
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        print(payload)
+        user_info = db.user.find_one({'id': payload['id']})  # id 값 찾아서 가져오기
+        return render_template('feedindex.html', user=user_info["id"])  # 페이지로 이동 및 id 값 넘겨주기
+        print(user)
+    # 해당 토큰이 만료 되었다면 아래의 코드 실행
+    except jwt.ExpiredSignatureError:
+        return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
+    # 해당 토큰이 올바르게 디코딩되지 않으면 아래의 코드 실행
+    except jwt.exceptions.DecodeError:
+        return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
 
 # 회원가입 부분 구현
 @app.route('/sign_up', methods=['POST'])
 def sign_up():
-    userEmail_receive = request.form['userEmail_give']
-    userName_receive = request.form['userName_give']
-    user_sign_ID_receive = request.form['user_sign_ID_give']
-    user_sign_PW_receive = request.form['user_sign_PW_give']
+    userEmail_receive = request.form['userEmail_give']  # user 이메일 받아오기
+    userName_receive = request.form['userName_give']  # user 이름 받아오기
+    user_sign_ID_receive = request.form['user_sign_ID_give'] # user 아이디 받아오기
+    user_sign_PW_receive = request.form['user_sign_PW_give'] # user 비밀번호 받아오기
 
     # PW 해쉬 적용
-    pw_hash = hashlib.sha256(user_sign_PW_receive.encode('utf-8')).hexdigest()
+    pw_hash = hashlib.sha256(user_sign_PW_receive.encode('utf-8')).hexdigest() # 데이터 베이스 저장할 때 hash 함수로 암호화
 
     db.user.insert_one(
-        {'email': userEmail_receive, 'name': userName_receive, 'id': user_sign_ID_receive, 'pw': pw_hash})
+        {'email': userEmail_receive, 'name': userName_receive, 'id': user_sign_ID_receive, 'pw': pw_hash}) # 받아온 값 들을 저장!
 
-    return jsonify({'result': 'success'})
+    return jsonify({'result': 'success' }) #  JSON 형태로 success 반환
 
 
 @app.route('/login', methods=['POST'])
 def login():
-    username_receive = request.form['username_give']
-    password_receive = request.form['password_give']
+    username_receive = request.form['username_give'] # id 값 받아오기
+    password_receive = request.form['password_give'] # pw 값 받아오기
 
-    # 해쉬 적용
+    # 해쉬 적용 pw 는 회원가입 때 hash된 값으로 저장되었기 때문에 찾기 위해 선 똑같이 hash 적용
     pw_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
-    # id hash된 pw 가지고 유저 찾기
+    # db에서 받아 온 id, hash된 pw 가지고 유저 찾기
     result = db.user.find_one({'id': username_receive, 'pw': pw_hash})
 
     # db에서 찾으면 JWT 토큰 발급
     if result is not None:
         payload = {
             'id': username_receive,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1)  # 만료시간 세팅
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1)
+            # payload에 받아온 id 값과 만료시간을 넣어줌
         }
+        # 토큰 = jwt 방식으로 인코딩 (payload + SECRET_KEY + 알고리즘) 저장
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256') \
-            # .decode('utf-8')
+        # .decode('utf-8')
 
         # 로컬에서는 pyJWT가 최신버전이라 디코드를 안해도 스트링값으로 반환
         # ec2에서는 pyJWT가 decode를 안하면 바이너리값으로 반환해서
@@ -102,7 +119,19 @@ def login_after_sign_up():
 
 @app.route('/mypage')
 def mypage():
-    return render_template('mypage.html')  # 마이페이지 작업이 완료되면 사용
+    token_receive = request.cookies.get('mytoken')  # 이용자 컴퓨터에 저장된 쿠키에서 mytoken 가져오기
+    try:
+        # 암호화된 token 값을 사용할 수 있도록 디코딩!
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        print(payload)
+        user_info = db.user.find_one({'id': payload['id']})  # id 값 찾아서 가져오기
+        return render_template('mypage.html', user=user_info["id"])  # 페이지로 이동 및 id 값 넘겨주기
+    # 해당 토큰이 만료 되었다면 아래의 코드 실행
+    except jwt.ExpiredSignatureError:
+        return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
+    # 해당 토큰이 올바르게 디코딩되지 않으면 아래의 코드 실행
+    except jwt.exceptions.DecodeError:
+        return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
 
 @app.route('/forgot_password')
