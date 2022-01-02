@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    show_comment_01();
-    show_comment_02();
+    setTimeout(() => show_comment_01(), 3000);
+    setTimeout(() => show_comment_02(), 3000);
 });
 
 

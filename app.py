@@ -39,6 +39,7 @@ def show_random():
 
 @app.route('/feedindex')
 def detail():
+
     return render_template("feedindex.html")  # 상세페이지로 이동
 
 
@@ -167,6 +168,18 @@ def comment_post_02():
 def comment_get_02():
     comment_list_02 = list(db.comment_02.find({}, {'_id': False}))
     return jsonify({'comments_02': comment_list_02})
+
+
+@app.route("/api/show_post_main", methods=['POST'])
+def show_mainpost():
+    show_list = []
+    # count = int(request.form['user_give'])
+    mypages = list(db.mypage.find({}, {'_id': False}).sort('like', -1))
+    for mypage in mypages:
+        show_list.append(mypage)
+    return jsonify({'show': show_list})
+
+
 
 
 if __name__ == '__main__':
