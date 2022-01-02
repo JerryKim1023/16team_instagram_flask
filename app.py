@@ -4,6 +4,7 @@ import datetime
 import jwt
 import hashlib
 import certifi
+
 ca = certifi.where()
 app = Flask(__name__)
 client = MongoClient('mongodb+srv://AKBARI:sparta@cluster0.jujbu.mongodb.net/cluster0?retryWrites=true&w=majority',
@@ -74,9 +75,8 @@ def login():
             'id': username_receive,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1)  # 만료시간 세팅
         }
-        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')\
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256') \
             # .decode('utf-8')
-
 
         # 로컬에서는 pyJWT가 최신버전이라 디코드를 안해도 스트링값으로 반환
         # ec2에서는 pyJWT가 decode를 안하면 바이너리값으로 반환해서
@@ -125,13 +125,14 @@ def search_db():
 
     return jsonify({'insta_search': list(rest_search) + list(follow_search)}), 200
 
+
 @app.route("/api/mailsearch", methods=['POST'])
 def search_mail():
     input = request.form['input_give']
 
     # same_ages = list(db.users.find({'age':21},{'_id':False}))
 
-    mail_search = list(db.user.find({'email':input},{'_id':False}))
+    mail_search = list(db.user.find({'email': input}, {'_id': False}))
 
     return jsonify({'mail_search': mail_search})
 
@@ -140,7 +141,8 @@ def search_mail():
 @app.route("/comment_01", methods=["POST"])
 def comment_post_01():
     comment_receive_01 = request.form['comment_give_01']
-    doc = {'comment_01': comment_receive_01}
+    user_receive = request.form['user_give']
+    doc = {'comment_01': comment_receive_01, 'user': user_receive}
     db.comment_01.insert_one(doc)
     return jsonify({'msg': '등록 완료!'})
 
@@ -155,7 +157,8 @@ def comment_get_01():
 @app.route("/comment_02", methods=["POST"])
 def comment_post_02():
     comment_receive_02 = request.form['comment_give_02']
-    doc = {'comment_02': comment_receive_02}
+    user_receive = request.form['user_give']
+    doc = {'comment_02': comment_receive_02, 'user': user_receive}
     db.comment_02.insert_one(doc)
     return jsonify({'msg': '등록 완료!'})
 
