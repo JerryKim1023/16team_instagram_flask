@@ -25,7 +25,6 @@ $(document).ready(function () {
     //      alert('화면이 변화할때 입력 값이 있을때  : ' + ('input[name=q]').attr('value', parasearch_input));
     // }
     db_search()
-    // mail_search()
 });
 
 function db_search() {
@@ -39,82 +38,98 @@ function db_search() {
         success: function (response) {
             console.log(response)
             let insta_searchs = response['insta_search']
+            let count = insta_searchs.length
 
-            for (let i = 0; i < insta_searchs.length; i++) {
-                let title = insta_searchs[i]['title']
-                let img = insta_searchs[i]['img']
-                let sub_title = insta_searchs[i]['sub_title']
-                let item_tags1 = insta_searchs[i]['item_tags1']
-                let item_tags2 = insta_searchs[i]['item_tags2']
-                let item_tags3 = insta_searchs[i]['item_tags3']
-                let sub_item_tag = insta_searchs[i]['sub_item_tag']
-                let sub_item_tag2 = insta_searchs[i]['sub_item_tag2']
-                let sub_item_tag3 = insta_searchs[i]['sub_item_tag3']
-                let sub_item_tag4 = insta_searchs[i]['sub_item_tag4']
-                let sub_item_tag5 = insta_searchs[i]['sub_item_tag5']
+            alert('p_name은 : ' + count);
 
-                if (sub_item_tag == null) {
-                    sub_item_tag = '　'
-                    sub_item_tag2 = '　'
-                    sub_item_tag3 = '　'
-                    sub_item_tag4 = '　'
-                    sub_item_tag5 = '　'
-                } else if (sub_item_tag2 == null) {
-                    sub_item_tag2 = ''
-                    sub_item_tag3 = ''
-                    sub_item_tag4 = ''
-                    sub_item_tag5 = ''
-                } else if (sub_item_tag3 == null) {
-                    sub_item_tag3 = ''
-                    sub_item_tag4 = ''
-                    sub_item_tag5 = ''
-                } else if (sub_item_tag4 == null) {
-                    sub_item_tag4 = ''
-                    sub_item_tag5 = ''
-                } else if (sub_item_tag5 == null) {
-                    sub_item_tag5 = ''
+
+            let first_temp = ` <div id="search-container">
+                <div class="search-wrapper">
+                    <div class="search-word" id="search-word_id">
+                        <h1><b>#${input}</b></h1>
+                    </div>
+                    <div class="search-set">
+                        <ul class="search-info">
+                            <li class="search-post">
+                                <a class="search-post" id="search-post_count" href="url" tabindex="0">
+                                    게시물
+                                    <span class="search-post">${count}</span>
+                                </a>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+
+            <div id="photo-container">
+            </div>
+            `
+
+            $('#main-container').append(first_temp)
+
+
+            for (let i = 0; i < insta_searchs.length + 1; i++) {
+                if (count - i >= 3) {
+                    let img1 = insta_searchs[i]['img']
+                    let img2 = insta_searchs[i + 1]['img']
+                    let img3 = insta_searchs[i + 2]['img']
+                    let temp_html = `
+                    <div class="card">
+                        <div class="photo-wrapper" id="photo-wrapper_id">     
+                    
+                            <div class="photoset">
+                                <img src="${img1}">
+                            </div>  
+                             <div class="photoset">
+                                <img src="${img2}">
+                            </div>    
+                             <div class="photoset">
+                                <img src="${img3}">
+                            </div>                                             
+                                                                                                      
+                         </div>
+                    </div> 
+                    `
+                    i = i + 2
+                    $('#photo-container').append(temp_html)
+
+                } else if (count - i == 2) {
+
+                    let img1 = insta_searchs[i]['img']
+                    let img2 = insta_searchs[i + 1]['img']
+
+                    let temp_html = `
+                    <div class="photoset">
+                        <img src="${img1}">
+                    </div>
+                    <div class="photoset">
+                        <img src="${img2}">
+                    </div>
+                    `
+
+                    i = i + 1
+                    $('#photo-container').append(temp_html)
+                } else if (count - i == 1) {
+                    let img1 = insta_searchs[i]['img']
+                    let temp_html = `
+                    <div class="photoset">
+                        <img src="${img1}">
+                    </div>                     
+                   `
+
+                    i = i
+                    $('#photo-container').append(temp_html)
                 }
 
-                let temp_html = `
-            <div class="card">
-        <img class="card-img-top"
-             src="${img}"
-             alt="Card image cap">
-        <p class="card-title">${title}</p>
-        <p class="card-text">${sub_title}</p>
-        <p class="card-text">${item_tags1} ${item_tags2} ${item_tags3}</p>
-        <p class="card-text">${sub_item_tag} ${sub_item_tag2} ${sub_item_tag3} ${sub_item_tag4} ${sub_item_tag5}</p>
-    </div>
-    `
-                $('#search-box').append(temp_html)
 
             }
+
         }
 
     })
 
 }
 
-function mail_search() {
-
-    let input = parasearch_input
-    $('#search-box').empty()
-    $.ajax({
-        type: "POST",
-        url: "/api/mailsearch",
-        data: {input_give: input},
-        success: function (response) {
-            console.log(response)
-            let mail_search = response['mail_search']
-            let email = mail_search['email', 'pw'][1]
-
-            if (mail_search == false) {
-                alert('메일 입력 값이 없습니다 : ');
-            } else {
-                alert('입력하신 메일이 DB에 있습니다. 메일은 : ' + email);
-            }
-
-        }
-    })
-
-}
