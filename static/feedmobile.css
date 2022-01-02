@@ -16,14 +16,12 @@ body {
   justify-content: space-between;
   background-color: white;
   align-items: center;
-  /* fixed 를 쓰면 부모의 width 영향을 받지 않는다 */
   width: 100%;
   position: fixed;
   max-width: 860px;
   border-bottom: 1px solid lightgray;
 }
 #mobile-header .header-icon {
-  /* 여기서 margin 의 % 는 너비(width)를 기준으로 합니다! */
   margin: 3% 5%;
   width: 6%;
 }
@@ -63,7 +61,7 @@ body {
   border: 2px solid transparent;
   border-radius: 50%;
   background-image: linear-gradient(#f6f6f6, #f6f6f6),
-    linear-gradient(to right, #ff7700, #ff3636aa, #ff00c3);
+    linear-gradient(to right, #2af598, #14cece, #009efd);
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
