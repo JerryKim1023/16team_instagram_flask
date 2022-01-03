@@ -115,6 +115,8 @@
 #story-container .story-on {
   width: 55px;
   height: 55px;
+  background-image: linear-gradient(#f6f6f6, #f6f6f6),
+  linear-gradient(to right, #2af598, #14cece, #009efd);
 }
 
 
