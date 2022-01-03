@@ -1,9 +1,11 @@
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from pymongo import MongoClient
-import datetime
+from datetime import datetime
 import jwt
 import hashlib
 import certifi
+import gridfs
+import codecs
 
 ca = certifi.where()
 app = Flask(__name__)
@@ -11,6 +13,7 @@ client = MongoClient('mongodb+srv://AKBARI:sparta@cluster0.jujbu.mongodb.net/clu
                      tlsCAFile=ca)
 db = client.dbakbari
 SECRET_KEY = 'TEST'
+fs = gridfs.GridFS(db)
 
 
 @app.route('/')
@@ -99,9 +102,9 @@ def login_after_sign_up():
     return render_template('sign_up.html')  # 회원가입 로그인 화면으로 이동
 
 
-@app.route('/mypage')
-def mypage():
-    return render_template('mypage.html')  # 마이페이지 작업이 완료되면 사용
+# @app.route('/mypage')
+# def mypage():
+#     return render_template('mypage.html')  # 마이페이지 작업이 완료되면 사용
 
 
 @app.route('/forgot_password')
@@ -167,6 +170,30 @@ def comment_post_02():
 def comment_get_02():
     comment_list_02 = list(db.comment_02.find({}, {'_id': False}))
     return jsonify({'comments_02': comment_list_02})
+
+
+# 파일 업로드 구현(방식 2)
+@app.route('/fileupload', methods=['POST'])
+def file_upload():
+    title_receive = request.form['title_give']
+    file = request.files['file_give']
+    comment_receive = request.form['comment_give']
+    fs_image_id = fs.put(file)
+    doc = {'title': title_receive, 'img': fs_image_id, 'comment': comment_receive}
+    db.upload.insert_one(doc)
+    return jsonify({'result': '업로드 완료!'})
+
+
+@app.route('/mypage')
+def file_show():
+    img_infos = list(db.upload.find())
+    img_binaries = []
+    for img_info in img_infos:
+        img_binary = fs.get(img_info['img'])
+        base64_data = codecs.encode(img_binary.read(), 'base64')
+        image = base64_data.decode('utf-8')
+        img_binaries.append(image)
+    return render_template('mypage.html', img=img_binaries)
 
 
 if __name__ == '__main__':
