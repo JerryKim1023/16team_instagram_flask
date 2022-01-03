@@ -204,5 +204,10 @@ def show_mainpost():
     return jsonify({'show': show_list})
 
 
+<<<<<<< HEAD
+=======
+
+# 서버 올릴 때는 없애고 올려주기!!!
+>>>>>>> df0c8ad00b7e244d3f8ccd70bd09791e6496749f
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
