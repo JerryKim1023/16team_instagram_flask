@@ -121,7 +121,7 @@ p, span {
     align-content: center;
     flex-wrap: wrap;
     background-color: #fff;
-    border: 1px solid slategray;
+    border: 1px solid lightgray;
 }
 img.logo_instagram {
     align-self: center;
@@ -131,7 +131,7 @@ img.logo_instagram {
 .input_login {
     width: 270px;
     height: 40px;
-    margin: 0 auto;
+    margin: 5px auto;
     padding: 0 10px;
     display: block;
     background-color: #fafafa;
@@ -246,6 +246,7 @@ a {
     color : #00366B;
     align-self: center;
     font-size: 12px;
+    text-decoration : none;
 }
 .button_forgot:hover {
     cursor: pointer;
@@ -263,6 +264,10 @@ a {
     padding: 10px 0;
 }
 
+.signup_text_center {
+    margin: 10px auto;
+}
+
 .sign_in_frame {
     display: block;
     color: slategray;
@@ -278,6 +283,9 @@ a {
 
 .sign_in_link {
     cursor: pointer;
+}
+.sign_in_link > span {
+    text-decoration : none;
 }
 
 .app_box {
@@ -356,11 +364,6 @@ footer {
 
 }
 
-.copyright-notice {
-    color: #999999;
-    justify-content: center;
-}
-
 .sign_form {
     display: flex;
     /*width: 90%;*/
@@ -384,6 +387,9 @@ footer {
     border-radius: 0.25rem;
     height: auto;
     cursor: pointer;
+    color: #999999;
+    justify-content: center;
+    align-items: center;
 }
 
 /*Footer 끝*/
@@ -392,7 +398,7 @@ footer {
 /*회원가입 페이지 추가 css*/
 .sign_in_container {
     width: 350px;
-    height: 500px;
+    height: 530px;
     margin: 100px auto 10px auto;
     display: flex;
     flex-direction: column;
@@ -400,6 +406,10 @@ footer {
     flex-wrap: wrap;
     background-color: #fff;
     border: 1px solid slategray;
+}
+
+a {
+    text-decoration: none;
 }
 
 
