@@ -12,37 +12,37 @@ function get_comment() {
         data: {},
         success: function (response) {
             let rows = response['comments']
-            console.log(rows)
-             console.log(rows[0])
-             console.log(rows[1])
-             console.log(rows[2])
-            console.log(rows['comment'])
-            console.log(rows.length)
-
 
             for (let i = 0; i < rows.length; i++) {
                 let comment = rows[i]['comment']
                 let user = rows[i]['id']
+                let docu_id = rows[i]['docu_id']
+
+
                 let temp_html = ``
                 temp_html = `<div class="comment-box">
                                 <p class="post-author">${user}</p>
                                 <p class="post-content">${comment}</p>
                              </div>`
-                $('#comment-list-01').append(temp_html)
+
+
+
+                $('#'+'comment-list'+docu_id).append(temp_html)
             }
         }
     });
 }
 
 
-function post_comment(docu_id) {
-    let comment= $('.comment').val()
-    let docu_id_receive = docu_id
+function post_comment(docu_idd) {
+
+    let comment= $('#'+'comment'+docu_idd).val()
+    let docu_id = docu_idd
     $.ajax({
         type: "POST",
         url: "/api/comment",
         // data: {comment_give: comment, user_give: user,docu_id_give : docu_id},
-        data: {comment_give: comment, user_give: user,docu_id_give : docu_id_receive },
+        data: {comment_give: comment, user_give: user,docu_id_give : docu_id },
         success: function (response) {
             window.location.reload()
         }

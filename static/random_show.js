@@ -153,7 +153,7 @@ function mainpost_show() {
                             <img src="${img}">
                             <p><strong>"${id}"</strong>님 <strong>외 ${like} 명</strong>이 좋아합니다</p>
                         </div>
-                        <div class="post-content-wrapper" class="comment-list" id="comment-list-01">
+                        <div class="post-content-wrapper" class="comment-list" id="comment-list${docu_id}">
                             
                         </div>
                         <p class="post-time">8시간 전</p>  
@@ -161,7 +161,7 @@ function mainpost_show() {
                         <div class="comment-container">
                             <div class="comment-left-side">
                                 <img src="${img}">
-                                <input class="comment" type="text" placeholder="댓글달기...">
+                                <input id = "comment${docu_id}" class="comment" type="text" placeholder="댓글달기...">
                             </div>
                             <button onclick="post_comment(${docu_id})" type="button" class="comment-button">게시</button>
                         </div>

@@ -144,8 +144,8 @@ def comment_get():
     token_receive = request.cookies.get('mytoken')
     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])  # jwt decode
     print(payload)
-
-    comment_list = list(db.comment.find({"docu_id"}, {'_id': False}))
+    # mypages = list(db.mypage.find({}, {'_id': False}).sort('like', -1))
+    comment_list = list(db.comment.find({}, {'_id': False}))
 
     return jsonify({'comments': comment_list})
 

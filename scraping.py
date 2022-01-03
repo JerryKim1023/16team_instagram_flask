@@ -14,11 +14,13 @@ time.sleep(5)
 req = driver.page_source
 soup = BeautifulSoup(req, 'html.parser')
 # content > div > div.cont_wrap > div.recommend_area > ul > li:nth-child(1) > dl > dt > a > img
-# content > div > div.cont_wrap > div.recommend_area > ul > li:nth-child(1) > dl > dt > a > p.s_tit
+# content > div > div.cont_wrap > div.recommend_area > ul > li:nth-child(2) > dl > dt > a > p.s_tit
 #react-root > section > main > article > div.EZdmt > div > div > div:nth-child(1) > div:nth-child(1) > a > div > div._9AhH0
 #react-root > section > main > article > div.EZdmt > div > div > div:nth-child(1) > div:nth-child(2) > a > div > div._9AhH0
 #react-root > section > main > article > div.EZdmt > div > div > div:nth-child(1) > div:nth-child(2) > a > div > div.KL4Bh > img
 #react-root > section > main > article > div.EZdmt > div > div > div:nth-child(1) > div:nth-child(3) > a > div > div.KL4Bh > img
+
+#content > div > div.cont_wrap > div.recommend_area > ul > li:nth-child(1) > dl
 
 trs = soup.select_one(
     '#content > div > div.cont_wrap > div.recommend_area > ul')
