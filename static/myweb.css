@@ -98,16 +98,19 @@ body {
   border-radius: 50%;
 }
 
-.profile-id {
-  padding: 0;
-  border: 0;
-  font: inherit;
-  vertical-align: baseline;
-  flex-shrink: 1;
-  min-width: 0;
-  align-items: center;
+.profile-wrapper{
 
+  margin-top: 25px;
 }
+
+
+.profile-id {
+    flex-direction: row;
+    justify-content: flex-start;
+    display: flex;
+    margin-right: 30px;
+}
+
 
 style attribute {
   --desktop-nav-height: 60px;
@@ -130,6 +133,9 @@ ul {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  background: linear-gradient(to right top, #2af598, #009efd);
+  color: transparent;
+  -webkit-background-clip: text;
 }
 
 .profile-info {
@@ -143,16 +149,29 @@ ul {
   text-align: -webkit-match-parent;
 }
 .profile-follow a{
-  color: inherit;
+  background: linear-gradient(to right top, #2af598, #009efd);
+  color: transparent;
+  -webkit-background-clip: text;
   font-size: 16px;
   margin-right: 40px;
   text-decoration:none
 }
 
 .profile-follow span{
-  color: #262626;
-  color: rgba(var(--i1d,38,38,38),1);
+  background: linear-gradient(to right top, #2af598, #009efd);
+  color: transparent;
+  -webkit-background-clip: text;
   font-weight: 600;
+}
+.profile-bio {
+  flex-direction: row;
+  justify-content: flex-start;
+  display: flex;
+}
+
+.profile-bio span {
+  color: gray;
+
 }
 
 .myfeed-icons {
