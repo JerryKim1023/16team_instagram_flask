@@ -36,5 +36,5 @@ document.addEventListener('keyup', function(event) {
 
 // 인스타 로고 클릭시 홈메뉴로 복귀
 function to_main() {
-    window.location.href = "https://pienergy.shop"
+    window.location.href = "https://newmeta.shop"
 }
