@@ -54,21 +54,20 @@ function random_show() {
 }
 
 function random_show_history() {
-    let max = 1200
-    let min = 0
-    let count = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    let count = 0
     $.ajax({
         type: "POST",
-        url: "/api/random_show",
+        url: "/api/random_show_history",
         data: {count_give: count},
         success: function (response) {
-            let rest = response['rest']
-            for (let i = 0; i < rest.length; i++) {
+            let mypage = response['mypage']
+            for (let i = 0; i < mypage.length; i++) {
 
                 // let title = rest[i]['title']
                 // let img = rest[i]['img']
-                let title2 = rest[i]['title']
-                let img2 = rest[i]['img']
+                let img = mypage[i]['image']
+                let comment = mypage[i]['comment']
 
 
                 //     let temp_html = `
@@ -86,9 +85,9 @@ function random_show_history() {
                 let temp_html_story = `        
                      <div class="story-wrapper">
                     <div class="story-off">
-                        <img src="${img2}"/>
+                        <img src="${img}"/>
                     </div>
-                    <p>${title2}</p>
+                    <p>${comment}</p>
                 </div>`
 
                 // $('#sub-icon-wrapper').append(temp_html)
