@@ -221,7 +221,7 @@
 
         insta_pic_log.style.opacity = op_count;
         settime_func = setTimeout(fade_in, 100);
-        if (op_count > 1) {
+        if (op_count > 10) {
             clearTimeout(settime_func);
             settime1_func = setTimeout(fade_out, 3000);
             op_count = 1;
@@ -233,7 +233,7 @@
 
         insta_pic_log.style.opacity = op_count;
         settime_func = setTimeout(fade_out, 130);
-        if (op_count < 0) {
+        if (op_count <= 0) {
             clearTimeout(settime_func);
             op_count = 0;
         }
@@ -255,6 +255,6 @@
 
 </script>
 
-<script src="../static/login.js"></script>
+<!--<script src="../static/login.js"></script>-->
 </body>
 </html>
