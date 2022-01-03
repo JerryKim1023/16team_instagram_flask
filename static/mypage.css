@@ -1,0 +1,125 @@
+/* 전체 틀 CSS */
+/* 모달창 */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+    opacity: 0;
+}
+
+.show {
+    opacity: 1;
+    z-index: 1000;
+    transition: all 0.5s;
+}
+
+.window {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    width: 600px;
+    height: 800px;
+    transform: translate(-50%, -40%);
+}
+
+.show .popup {
+    transform: translate(-50%, -50%);
+    transition: all 0.5s;
+}
+
+/* 세부 내용 CSS */
+/* '공유하기', 'X'버튼, '새 게시물 만들기'*/
+.popup .upload-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 560px;
+    height: 50px;
+    border-radius: 20px 20px 0 0;
+    padding: 0 20px 0 20px;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+}
+
+/* '공유하기', 'X' 버튼 */
+.popup .upload-header button {
+    border: None;
+    background: white;
+    font-size: 16px;
+    color: #0095f6;
+}
+
+/* 이미지 스크롤 */
+#preview-image{
+    height: 640px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+/* 이미지 */
+#previewImage{
+    padding: 20px;
+    width: 550px;
+}
+
+/* '제목입력', '파일선택', '문구입력' */
+#upload-things{
+    position: fixed;
+    top: 680px;
+    width: 100%;
+    border: None;
+
+}
+
+/* '제목입력', '파일선택' */
+#upload-titles{
+    border: None;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+    width: 560px;
+    height: 35px;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    background-color: white;
+}
+
+/* '제목입력' */
+#title{
+    border: None;
+    width: 400px;
+    height: 20px;
+    outline: None;
+    font-size: 16px;
+  }
+
+/* '파일선택' */
+#file{
+    border: None;
+    width: 200px;
+}
+
+/* '문구입력' */
+#upload-comment{
+    border:None;
+    padding: 10px 20px 10px 20px;
+    border-radius: 0 0 20px 20px;
+    outline: None;
+    width: 560px;
+    height: 40px;
+    font-size: 16px;
+}
