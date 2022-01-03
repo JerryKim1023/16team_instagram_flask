@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from pymongo import MongoClient
-from datetime import datetime
+from datetime import datetime, timedelta
 import jwt
 import hashlib
 import certifi
@@ -96,8 +96,7 @@ def login():
             'id': username_receive,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1)  # 만료시간 세팅
         }
-        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256') \
-            # .decode('utf-8')
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8')
 
         # 로컬에서는 pyJWT가 최신버전이라 디코드를 안해도 스트링값으로 반환
         # ec2에서는 pyJWT가 decode를 안하면 바이너리값으로 반환해서
