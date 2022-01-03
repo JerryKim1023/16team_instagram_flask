@@ -1,9 +1,11 @@
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from pymongo import MongoClient
-import datetime
+from datetime import datetime
 import jwt
 import hashlib
 import certifi
+import gridfs
+import codecs
 
 ca = certifi.where()
 app = Flask(__name__)
@@ -11,6 +13,7 @@ client = MongoClient('mongodb+srv://AKBARI:sparta@cluster0.jujbu.mongodb.net/clu
                      tlsCAFile=ca)
 db = client.dbakbari
 SECRET_KEY = 'TEST'
+fs = gridfs.GridFS(db)
 
 
 @app.route('/')
@@ -39,7 +42,6 @@ def show_random():
 
 @app.route('/feedindex')
 def detail():
-
     return render_template("feedindex.html")  # 상세페이지로 이동
 
 
@@ -100,9 +102,9 @@ def login_after_sign_up():
     return render_template('sign_up.html')  # 회원가입 로그인 화면으로 이동
 
 
-@app.route('/mypage')
-def mypage():
-    return render_template('mypage.html')  # 마이페이지 작업이 완료되면 사용
+# @app.route('/mypage')
+# def mypage():
+#     return render_template('mypage.html')  # 마이페이지 작업이 완료되면 사용
 
 
 @app.route('/forgot_password')
@@ -138,49 +140,104 @@ def search_mail():
     return jsonify({'mail_search': mail_search})
 
 
-# comment 작성 구현_01
-@app.route("/comment_01", methods=["POST"])
-def comment_post_01():
-    comment_receive_01 = request.form['comment_give_01']
+# comment 작성 구현_수정
+
+@app.route("/api/comment", methods=["GET"])
+def comment_get():
+    token_receive = request.cookies.get('mytoken')
+    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])  # jwt decode
+    print(payload)
+    # mypages = list(db.mypage.find({}, {'_id': False}).sort('like', -1))
+    comment_list = list(db.comment.find({}, {'_id': False}))
+
+    return jsonify({'comments': comment_list})
+
+
+@app.route("/api/comment", methods=["POST"])
+def comment_post():
+    comment_receive = request.form['comment_give']
     user_receive = request.form['user_give']
-    doc = {'comment_01': comment_receive_01, 'user': user_receive}
-    db.comment_01.insert_one(doc)
+    docu_id_receive = request.form['docu_id_give']
+    # docu_id_receive = request.form['docu_id_give']
+    # doc = {'comment': comment_receive, 'id': user_receive, 'docu_id' = docu_id_receive}
+
+    doc = {'comment': comment_receive, 'id': user_receive, 'docu_id': docu_id_receive }
+    db.comment.insert_one(doc)
     return jsonify({'msg': '등록 완료!'})
 
 
-@app.route("/comment_01", methods=["GET"])
-def comment_get_01():
-    comment_list_01 = list(db.comment_01.find({}, {'_id': False}))
-    return jsonify({'comments_01': comment_list_01})
-
-
-# comment 작성 구현_02
-@app.route("/comment_02", methods=["POST"])
-def comment_post_02():
-    comment_receive_02 = request.form['comment_give_02']
-    user_receive = request.form['user_give']
-    doc = {'comment_02': comment_receive_02, 'user': user_receive}
-    db.comment_02.insert_one(doc)
-    return jsonify({'msg': '등록 완료!'})
-
-
-@app.route("/comment_02", methods=["GET"])
-def comment_get_02():
-    comment_list_02 = list(db.comment_02.find({}, {'_id': False}))
-    return jsonify({'comments_02': comment_list_02})
+#
+# # comment 작성 구현_01
+# @app.route("/comment_01", methods=["POST"])
+# def comment_post_01():
+#     comment_receive_01 = request.form['comment_give_01']
+#     user_receive = request.form['user_give']
+#     doc = {'comment_01': comment_receive_01, 'user': user_receive}
+#     db.comment_01.insert_one(doc)
+#     return jsonify({'msg': '등록 완료!'})
+#
+#
+# @app.route("/comment_01", methods=["GET"])
+# def comment_get_01():
+#     comment_list_01 = list(db.comment_01.find({}, {'_id': False}))
+#     return jsonify({'comments_01': comment_list_01})
+#
+#
+# # comment 작성 구현_02
+# @app.route("/comment_02", methods=["POST"])
+# def comment_post_02():
+#     comment_receive_02 = request.form['comment_give_02']
+#     user_receive = request.form['user_give']
+#     doc = {'comment_02': comment_receive_02, 'user': user_receive}
+#     db.comment_02.insert_one(doc)
+#     return jsonify({'msg': '등록 완료!'})
+#
+#
+# @app.route("/comment_02", methods=["GET"])
+# def comment_get_02():
+#     comment_list_02 = list(db.comment_02.find({}, {'_id': False}))
+#     return jsonify({'comments_02': comment_list_02})
 
 
 @app.route("/api/show_post_main", methods=['POST'])
 def show_mainpost():
     show_list = []
     # count = int(request.form['user_give'])
+    # db.student.find({}, {roll: 1, _id: 0})
+
     mypages = list(db.mypage.find({}, {'_id': False}).sort('like', -1))
+    print(mypages)
+
     for mypage in mypages:
         show_list.append(mypage)
     return jsonify({'show': show_list})
 
 
-
 # 서버 올릴 때는 없애고 올려주기!!!
+
+# 파일 업로드 구현(방식 2)
+@app.route('/fileupload', methods=['POST'])
+def file_upload():
+    title_receive = request.form['title_give']
+    file = request.files['file_give']
+    comment_receive = request.form['comment_give']
+    fs_image_id = fs.put(file)
+    doc = {'title': title_receive, 'img': fs_image_id, 'comment': comment_receive}
+    db.upload.insert_one(doc)
+    return jsonify({'result': '업로드 완료!'})
+
+
+@app.route('/mypage')
+def file_show():
+    img_infos = list(db.upload.find())
+    img_binaries = []
+    for img_info in img_infos:
+        img_binary = fs.get(img_info['img'])
+        base64_data = codecs.encode(img_binary.read(), 'base64')
+        image = base64_data.decode('utf-8')
+        img_binaries.append(image)
+    return render_template('mypage.html', img=img_binaries)
+
+
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', debug=True)
