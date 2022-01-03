@@ -6,7 +6,7 @@ const linkToMain = document.getElementsByTagName('a')[0];
 idInput.addEventListener('keyup', function(event) {
     if (idInput.value && pwInput.value) {
         loginBtn.disabled = false;
-        // 로그인 버튼 활성화 시 클릭할 때 깃헙에 저장된 index.html로 링크 걸어놓음
+        // 로그인 버튼 활성화 시 클릭할 때 깃헙에 저장된 feedindex.html로 링크 걸어놓음
         linkToMain.href = "/feedindex";
     }
     else {
@@ -18,7 +18,7 @@ idInput.addEventListener('keyup', function(event) {
 pwInput.addEventListener('keyup', function(event) {
     if (idInput.value && pwInput.value) {
         loginBtn.disabled = false;
-        // 로그인 버튼 활성화 시 클릭할 때 깃헙에 저장된 index.html로 링크 걸어놓음
+        // 로그인 버튼 활성화 시 클릭할 때 깃헙에 저장된 feedindex.html로 링크 걸어놓음
         linkToMain.href = "/feedindex";
     }
     else {

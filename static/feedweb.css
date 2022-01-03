@@ -115,6 +115,8 @@
 #story-container .story-on {
   width: 55px;
   height: 55px;
+  background-image: linear-gradient(#f6f6f6, #f6f6f6),
+  linear-gradient(to right, #2af598, #14cece, #009efd);
 }
 
 
@@ -132,8 +134,8 @@
   margin-left: 1%;
 }
 #post-container .post-wrapper .post-header .left-wrapper img {
-  width: 3vw;
-  height: 3vw;
+  width: 40px;
+  height: 40px;
 }
 #post-container .post-wrapper .post-header .right-wrapper img {
   width: 7%;
@@ -173,7 +175,8 @@
   /*padding-left: 1%;*/
 }
 #post-container .post-wrapper .post-footer .post-like-wrapper img {
-  width: 2vw;
+  width: 30px;
+  height: 30px;
 }
 
 
@@ -182,6 +185,7 @@
   display: flex;
   flex-direction: column;
   width: 275px;
+  position: sticky
 }
 
 

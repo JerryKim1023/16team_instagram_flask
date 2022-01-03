@@ -15,8 +15,8 @@
     <title>Coder'stagram_Flask_Project</title>
 
     <!--    파비콘 설정  -->
-    <link rel="shortcut icon" href="https://i.imgur.com/COSpDio.png" type="image/x-icon">
-    <link rel="icon" href="https://i.imgur.com/COSpDio.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://i.imgur.com/XxTzTxh.png" type="image/x-icon">
+    <link rel="icon" href="https://i.imgur.com/XxTzTxh.png" type="image/x-icon">
     <!--     CSS 파일 불러오기-->
     <link rel="stylesheet" href="../static/login.css" type="text/css">
     <link rel="stylesheet" href="../static/common.css" type="text/css">
@@ -221,7 +221,7 @@
 
         insta_pic_log.style.opacity = op_count;
         settime_func = setTimeout(fade_in, 100);
-        if (op_count > 1) {
+        if (op_count > 10) {
             clearTimeout(settime_func);
             settime1_func = setTimeout(fade_out, 3000);
             op_count = 1;
@@ -232,8 +232,8 @@
         op_count = op_count - 0.1;
 
         insta_pic_log.style.opacity = op_count;
-        settime_func = setTimeout(fade_out, 200);
-        if (op_count < 0) {
+        settime_func = setTimeout(fade_out, 130);
+        if (op_count <= 0) {
             clearTimeout(settime_func);
             op_count = 0;
         }
