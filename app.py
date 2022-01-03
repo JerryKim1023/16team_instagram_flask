@@ -1,6 +1,9 @@
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from pymongo import MongoClient
-from datetime import datetime
+# from datetime
+# import만 사용하면 모듈 안의 함수를 사용할 때, 모듈명.함수명( )으로 하고, from을 사용하면 바로 함수명( )으로 사용
+# 그래서 from datetime을 주석 처리 했더니 로그인 이슈를 해결할 수 있었음.
+import datetime
 import jwt
 import hashlib
 import certifi

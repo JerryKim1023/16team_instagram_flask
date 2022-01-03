@@ -39,7 +39,6 @@ html {
 
 #desktop-header-wrapper #search-wrapper {
     background-color: #fcfcfc;
-    padding: 10px auto;
     border: 1px solid #dfdfdf;
     border-radius: 3px;
 }
@@ -158,7 +157,6 @@ ul {
 
 .search-post span{
   color: #262626;
-  color: rgba(var(--i1d,38,38,38),1);
   font-weight: 600;
 }
 
