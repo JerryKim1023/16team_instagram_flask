@@ -134,8 +134,8 @@
   margin-left: 1%;
 }
 #post-container .post-wrapper .post-header .left-wrapper img {
-  width: 3vw;
-  height: 3vw;
+  width: 40px;
+  height: 40px;
 }
 #post-container .post-wrapper .post-header .right-wrapper img {
   width: 7%;
@@ -175,7 +175,8 @@
   /*padding-left: 1%;*/
 }
 #post-container .post-wrapper .post-footer .post-like-wrapper img {
-  width: 2vw;
+  width: 30px;
+  height: 30px;
 }
 
 
