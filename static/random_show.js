@@ -126,6 +126,7 @@ function mainpost_show() {
 
 
                 let temp_html = ` <div class="post-wrapper">
+                    <div id=${docu_id} style="display:none">${docu_id}</div>
                     <div class="post-header">
                         <div class="left-wrapper">
                             <img src="${img}"/>
@@ -162,7 +163,7 @@ function mainpost_show() {
                                 <img src="${img}">
                                 <input class="comment" type="text" placeholder="댓글달기...">
                             </div>
-                            <button onclick="post_comment()" type="button" class="comment-button">게시</button>
+                            <button onclick="post_comment(${docu_id})" type="button" class="comment-button">게시</button>
                         </div>
                     </div>
                 </div>

@@ -145,7 +145,7 @@ def comment_get():
     payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])  # jwt decode
     print(payload)
 
-    comment_list = list(db.comment.find({"id" :payload['id']}, {'_id': False}))
+    comment_list = list(db.comment.find({"docu_id"}, {'_id': False}))
 
     return jsonify({'comments': comment_list})
 
@@ -154,12 +154,14 @@ def comment_get():
 def comment_post():
     comment_receive = request.form['comment_give']
     user_receive = request.form['user_give']
+    docu_id_receive = request.form['docu_id_give']
     # docu_id_receive = request.form['docu_id_give']
     # doc = {'comment': comment_receive, 'id': user_receive, 'docu_id' = docu_id_receive}
 
-    doc = {'comment': comment_receive, 'id': user_receive}
+    doc = {'comment': comment_receive, 'id': user_receive, 'docu_id': docu_id_receive }
     db.comment.insert_one(doc)
     return jsonify({'msg': '등록 완료!'})
+
 
 #
 # # comment 작성 구현_01
@@ -198,16 +200,17 @@ def comment_post():
 def show_mainpost():
     show_list = []
     # count = int(request.form['user_give'])
+    # db.student.find({}, {roll: 1, _id: 0})
+
     mypages = list(db.mypage.find({}, {'_id': False}).sort('like', -1))
+    print(mypages)
+
     for mypage in mypages:
         show_list.append(mypage)
     return jsonify({'show': show_list})
 
 
-<<<<<<< HEAD
-=======
-
 # 서버 올릴 때는 없애고 올려주기!!!
->>>>>>> df0c8ad00b7e244d3f8ccd70bd09791e6496749f
+
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', debug=True)

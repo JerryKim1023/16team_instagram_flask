@@ -35,13 +35,14 @@ function get_comment() {
 }
 
 
-function post_comment() {
+function post_comment(docu_id) {
     let comment= $('.comment').val()
+    let docu_id_receive = docu_id
     $.ajax({
         type: "POST",
         url: "/api/comment",
         // data: {comment_give: comment, user_give: user,docu_id_give : docu_id},
-        data: {comment_give: comment, user_give: user},
+        data: {comment_give: comment, user_give: user,docu_id_give : docu_id_receive },
         success: function (response) {
             window.location.reload()
         }
