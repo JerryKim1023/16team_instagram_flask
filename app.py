@@ -1,9 +1,11 @@
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from pymongo import MongoClient
+
 # from datetime
 # import만 사용하면 모듈 안의 함수를 사용할 때, 모듈명.함수명( )으로 하고, from을 사용하면 바로 함수명( )으로 사용
 # 그래서 from datetime을 주석 처리 했더니 로그인 이슈를 해결할 수 있었음.
 import datetime
+
 import jwt
 import hashlib
 import certifi
@@ -35,12 +37,29 @@ def main():
 
 @app.route("/api/random_show", methods=['POST'])
 def show_random():
-    rest_list = []
+    book_list = []
     count = int(request.form['count_give'])
-    rest = list(db.rest.find({}, {'_id': False}).sort('like', -1))
-    for count_ in rest[count:count + 8]:
-        rest_list.append(count_)
-    return jsonify({'rest': rest_list})
+    book = list(db.bookmark.find({}, {'_id': False}).sort('like', -1))
+    for count_ in book[count:count + 12]:
+        book_list.append(count_)
+    return jsonify({'book': book_list})
+
+
+@app.route("/api/random_show_history", methods=['POST'])
+def show_historyrandom():
+    mypage_list = []
+    count = int(request.form['count_give'])
+    token_receive = request.cookies.get('mytoken')
+    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+
+    mypage = db.mypage.find({"id": payload['id']}, {'_id': False})
+
+    mypages = list(mypage)
+
+    for my_ in mypages[count:count + 10]:
+        mypage_list.append(my_)
+
+    return jsonify({'mypage': mypage_list})
 
 
 @app.route("/api/random_show_history", methods=['POST'])
@@ -165,9 +184,6 @@ def search_mail():
 
 @app.route("/api/comment", methods=["GET"])
 def comment_get():
-    token_receive = request.cookies.get('mytoken')
-    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])  # jwt decode
-    print(payload)
     # mypages = list(db.mypage.find({}, {'_id': False}).sort('like', -1))
     comment_list = list(db.comment.find({}, {'_id': False}))
 
@@ -182,7 +198,7 @@ def comment_post():
     # docu_id_receive = request.form['docu_id_give']
     # doc = {'comment': comment_receive, 'id': user_receive, 'docu_id' = docu_id_receive}
 
-    doc = {'comment': comment_receive, 'id': user_receive, 'docu_id': docu_id_receive }
+    doc = {'comment': comment_receive, 'id': user_receive, 'docu_id': docu_id_receive}
     db.comment.insert_one(doc)
     return jsonify({'msg': '등록 완료!'})
 
@@ -221,17 +237,32 @@ def comment_post():
 
 
 @app.route("/api/show_post_main", methods=['POST'])
-def show_mainpost():
+def show_mypage():
     show_list = []
+
     # count = int(request.form['user_give'])
     # db.student.find({}, {roll: 1, _id: 0})
 
     mypages = list(db.mypage.find({}, {'_id': False}).sort('like', -1))
+
     print(mypages)
 
     for mypage in mypages:
         show_list.append(mypage)
+
     return jsonify({'show': show_list})
+
+
+@app.route("/api/show_post_main_user", methods=['POST'])
+def show_user_info():
+    token_receive = request.cookies.get('mytoken')
+    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])  # jwt decode
+    print(payload)
+
+    user_info = db.user_info.find_one({'id': payload['id']})
+    image = user_info['image']
+
+    return jsonify({'user_image': image})
 
 
 # 서버 올릴 때는 없애고 올려주기!!!

@@ -28,7 +28,7 @@
         // onclick 사용하여 실행
         function logout() {
             $.removeCookie('mytoken');
-            alert('로그아웃!')
+            // alert('로그아웃!')
             window.location.href = '/login'
         }
 
@@ -71,61 +71,61 @@
     <div id="container">
         <div id="main-container">
             <div id="story-container">
-                <div class="story-wrapper">
-                    <div class="story-off">
-                        <img src="https://i.imgur.com/f7sHxMT.jpg"/>
-                    </div>
-                    <p>내 스토리</p>
-                </div>
+<!--                <div class="story-wrapper">-->
+<!--                    <div class="story-off">-->
+<!--                        <img src="https://i.imgur.com/f7sHxMT.jpg"/>-->
+<!--                    </div>-->
+<!--                    <p>내 스토리</p>-->
+<!--                </div>-->
             </div>
             <div id="post-container">
-                <div class="post-wrapper">
-                    <div class="post-header">
-                        <div class="left-wrapper">
-                            <img src="https://i.imgur.com/f7sHxMT.jpg"/>
-                            <p>이용자5</p>
-                        </div>
-                        <div class="right-wrapper">
-                            <img src="https://i.imgur.com/n0hgaRi.png">
-                        </div>
-                    </div>
-                    <div class="post-body">
-                        <img src="https://i.imgur.com/f7sHxMT.jpg">
-                        <div class="post-icons-wrapper">
-                            <div class="left-wrapper">
-                                <img class="post-icon" src="https://i.imgur.com/38AQSM1.png">
-                                <img class="post-icon-2" src="https://i.imgur.com/UG77MC0.png">
-                            </div>
-                            <div class="right-wrapper">
-                                <img src="https://i.imgur.com/CN1UMsV.png">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post-footer">
-                        <div class="post-like-wrapper">
-                            <img src="https://i.imgur.com/f7sHxMT.jpg">
-                            <p><strong>이용자</strong>님 <strong>외 6,671명</strong>이 좋아합니다</p>
-                        </div>
-                        <div class="post-content-wrapper" class="comment-list" id="comment-list-02">
-                            <div class="comment-box">
-                                <p class="post-author">chacha_vely</p>
-                                <p class="post-content">앞으로도 화이팅해요!</p>
-                            </div>
-                            <div class="comment-box">
-                                <p class="post-author">coding_man21</p>
-                                <p class="post-content">👍👍👍</p>
-                            </div>
-                        </div>
-                        <p class="post-time">8시간 전</p>
-                        <div class="comment-containerc">
-                            <div class="comment-left-side">
-                                <img src="https://i.imgur.com/f7sHxMT.jpg" , alt="스마일">
-                                <input id="comment_02" class="comment" type="text" placeholder="댓글달기...">
-                            </div>
-                            <button onclick="save_comment()" type="button" class="comment-button">게시</button>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="post-wrapper">-->
+<!--                    <div class="post-header">-->
+<!--                        <div class="left-wrapper">-->
+<!--                            <img src="https://i.imgur.com/f7sHxMT.jpg"/>-->
+<!--                            <p>이용자5</p>-->
+<!--                        </div>-->
+<!--                        <div class="right-wrapper">-->
+<!--                            <img src="https://i.imgur.com/n0hgaRi.png">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="post-body">-->
+<!--                        <img src="https://i.imgur.com/f7sHxMT.jpg">-->
+<!--                        <div class="post-icons-wrapper">-->
+<!--                            <div class="left-wrapper">-->
+<!--                                <img class="post-icon" src="https://i.imgur.com/38AQSM1.png">-->
+<!--                                <img class="post-icon-2" src="https://i.imgur.com/UG77MC0.png">-->
+<!--                            </div>-->
+<!--                            <div class="right-wrapper">-->
+<!--                                <img src="https://i.imgur.com/CN1UMsV.png">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="post-footer">-->
+<!--                        <div class="post-like-wrapper">-->
+<!--                            <img src="https://i.imgur.com/f7sHxMT.jpg">-->
+<!--                            <p><strong>이용자</strong>님 <strong>외 6,671명</strong>이 좋아합니다</p>-->
+<!--                        </div>-->
+<!--                        <div class="post-content-wrapper" class="comment-list" id="comment-list-02">-->
+<!--                            <div class="comment-box">-->
+<!--                                <p class="post-author">chacha_vely</p>-->
+<!--                                <p class="post-content">앞으로도 화이팅해요!</p>-->
+<!--                            </div>-->
+<!--                            <div class="comment-box">-->
+<!--                                <p class="post-author">coding_man21</p>-->
+<!--                                <p class="post-content">👍👍👍</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <p class="post-time">8시간 전</p>-->
+<!--                        <div class="comment-containerc">-->
+<!--                            <div class="comment-left-side">-->
+<!--                                <img src="https://i.imgur.com/f7sHxMT.jpg" , alt="스마일">-->
+<!--                                <input id="comment_02" class="comment" type="text" placeholder="댓글달기...">-->
+<!--                            </div>-->
+<!--                            <button onclick="save_comment()" type="button" class="comment-button">게시</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
         <div id="sub-container">
@@ -134,16 +134,16 @@
                 <p id="sub-header-text-2">모두 보기</p>
             </div>
             <div id="sub-icon-wrapper">
-                <div class="sub-item">
-                    <div class="sub-item-user">
-                        <a href="/mypage"><img src="https://i.imgur.com/f7sHxMT.jpg"></a>
-                        <div class="sub-item-text">
-                            <p class="sub-item-name">빨간망토 차차</p>
-                            <p class="sub-item-follower">이용자님이 팔로우합니다</p>
-                        </div>
-                    </div>
-                    <p class="sub-item-button">팔로우</p>
-                </div>
+<!--                <div class="sub-item">-->
+<!--                    <div class="sub-item-user">-->
+<!--                        <a href="/mypage"><img src="https://i.imgur.com/f7sHxMT.jpg"></a>-->
+<!--                        <div class="sub-item-text">-->
+<!--                            <p class="sub-item-name">빨간망토 차차</p>-->
+<!--                            <p class="sub-item-follower">이용자님이 팔로우합니다</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <p class="sub-item-button">팔로우</p>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

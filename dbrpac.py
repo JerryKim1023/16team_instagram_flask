@@ -4,11 +4,11 @@ client = MongoClient('mongodb+srv://AKBARI:sparta@cluster0.jujbu.mongodb.net/clu
 db = client.dbakbari
 
 comment_doc = {
-    'docu_id': '1',
+    'docu_id': '5',
     'id': 'nmdkims',
-    'image': 'https://cdn.pixabay.com/photo/2021/12/01/15/10/happy-new-year-6838220_960_720.jpg',
-    'comment': '새해복 많이 받으세요',
-    'like': '2400'
+    'image': 'https://cdn.pixabay.com/photo/2021/08/01/21/06/shwezigon-pagoda-6515356_960_720.jpg',
+    'comment': '쉐다곤',
+    'like': '8032'
 }
 db.mypage.insert_one(comment_doc)
 
