@@ -25,7 +25,6 @@
 
     <script>
         // 쿠키에서 토큰삭제
-        // onclick 사용하여 실행
         function logout() {
             $.removeCookie('mytoken');
             // alert('로그아웃!')
@@ -34,6 +33,11 @@
 
         var user = '{{user}}';
 
+
+        // 마이페이지 이동함수
+        function go_mypage() {
+            window.location.href = '/mypage'
+        }
 
     </script>
 </head>
@@ -63,8 +67,10 @@
             <div id="header-icon-wrapper">
                 <img class="header-icon" src="https://i.imgur.com/XzpBnZx.png"/>
                 <img class="header-icon" src="https://i.imgur.com/QzZl3IX.png"/>
-                <img onclick="logout()" class="header-icon" src="https://i.imgur.com/g7fgRMj.png"/>
-                <img onclick='window.location.href = "/mypage"' class="header-icon" src="https://i.imgur.com/xfXP0Z2.png"/>
+                <img style="cursor: pointer" onclick="logout()" class="header-icon" src="https://i.imgur.com/g7fgRMj.png"/>
+
+{#                마이페이지 가는 헤더아이콘 수정부분#}
+                <img style="cursor: pointer" onclick="go_mypage()" class="header-icon" src="https://i.imgur.com/xfXP0Z2.png"/>
             </div>
         </div>
     </div>
