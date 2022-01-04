@@ -43,6 +43,24 @@ def show_random():
     return jsonify({'rest': rest_list})
 
 
+@app.route("/api/random_show_history", methods=['POST'])
+def show_historyrandom():
+    mypage_list = []
+    count = int(request.form['count_give'])
+    token_receive = request.cookies.get('mytoken')
+    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+
+    mypage = db.mypage.find({"id":payload['id']}, {'_id': False})
+
+    mypages =list(mypage)
+
+    for my_ in mypages[count:count + 2]:
+        mypage_list.append(my_)
+
+
+    return jsonify({'mypage': mypage_list})
+
+
 @app.route('/feedindex')
 def detail():
     return render_template("feedindex.html")  # 상세페이지로 이동
