@@ -1,9 +1,9 @@
 
 
 # <img src="https://i.imgur.com/XxTzTxh.png" height="30"/>  Coder'sTagram(인스타클론코딩프로젝트)  
-[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ohahohah/readme-template/graphs/commit-activity) 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![made-with-pycharm](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](https://www.jetbrains.com/ko-kr/pycharm/download/#section=windows)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/JerryKim1023/16team_instagram_flask/edit/main/) 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/JerryKim1023/16team_instagram_flask/edit/main/)
 
 
 
