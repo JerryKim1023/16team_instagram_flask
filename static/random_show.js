@@ -30,13 +30,13 @@ function random_show() {
                 let temp_html = `        
                     <div class = "sub-item" >
                     <div class = "sub-item-user" >
-                    <a href = "/mypage"> <img src ="${img}"></a>
+                    <a href = "https://gather.town/app/aFVnoYb9QJ4GqA3d/sparta-nbcamp-ai"> <img src ="${img}"></a>
                 <div class="sub-item-text">
                     <p class="sub-item-name">${title}</p>
-                    <p class="sub-item-follower">${title}님이 팔로우합니다</p>
+                    <p class="sub-item-follower">${title}님을 팔로우합니다</p>
                 </div>
             </div>
-                <p class="sub-item-button">팔로우</p>
+                <p class="sub-item-button">따라가기</p>
             </div>`
 
                 //   let temp_html_story = `

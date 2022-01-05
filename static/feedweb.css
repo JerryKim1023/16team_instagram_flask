@@ -244,7 +244,17 @@
   margin: 0 3px;
 }
 #sub-container #sub-icon-wrapper .sub-item .sub-item-button {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
   color: rgb(0, 123, 255);
 }
+
+
+
+
+/*!*김지용이 수정*!*/
+/*#go_mypagego_mypage {*/
+/*  margin: 0% 3.5%;*/
+/*    width: 8%;*/
+/*  cursor: pointer;*/
+/*}*/
