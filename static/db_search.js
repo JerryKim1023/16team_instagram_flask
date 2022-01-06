@@ -7,9 +7,9 @@ function getParameter(strParamName) {
 }
 
 var p_name = getParameter("q");
-alert('p_name은 : ' + p_name);
+// alert('p_name은 : ' + p_name);
 var parasearch_input = decodeURIComponent(p_name);
-alert('parasearch는 : ' + parasearch_input);
+// alert('parasearch는 : ' + parasearch_input);
 
 // $('input[name=q]').attr('value', 1);
 // $('input[name=q]').attr('value', parasearch_input);
@@ -40,7 +40,7 @@ function db_search() {
             let insta_searchs = response['insta_search']
             let count = insta_searchs.length
 
-            alert('p_name은 : ' + count);
+            // alert('p_name은 : ' + count);
 
 
             let first_temp = ` <div id="search-container">
