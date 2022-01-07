@@ -114,7 +114,7 @@ p, span {
 /*로그인 시작*/
 .container {
     width: 350px;
-    height: 420px;
+    height: 430px;
     margin: 100px auto 10px auto;
     display: flex;
     flex-direction: column;
