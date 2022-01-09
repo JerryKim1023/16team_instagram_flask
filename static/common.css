@@ -417,6 +417,8 @@ a {
     .left_frame {
         display: none;
     }
-
+    footer {
+        display: none;
+    }
 
 }
