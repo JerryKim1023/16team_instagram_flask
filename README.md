@@ -32,7 +32,7 @@
 ## Contributing
 - Thanks to @김지용
 - Thanks to @최양임
-- Thanks to @박효정
+- Thanks to @남효정
 - Thanks to @한태영
 - Thanks to @김훈희
 
